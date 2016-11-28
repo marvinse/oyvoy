@@ -1,0 +1,71 @@
+.slider-restaurants {
+  margin: 0 38px;
+  overflow: hidden; }
+  .slider-restaurants__restaurant {
+    border: 1px solid;
+    float: left;
+    margin-right: 8px;
+    width: calc(25% - 8px); }
+    .slider-restaurants__restaurant__logo {
+      height: 100px;
+      overflow: hidden;
+      padding: 10px; }
+      .slider-restaurants__restaurant__logo img {
+        height: 100%;
+        width: 100%; }
+    .slider-restaurants__restaurant__food {
+      position: relative; }
+      .slider-restaurants__restaurant__food img {
+        width: 100%; }
+      .slider-restaurants__restaurant__food div {
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 0;
+        width: 100%; }
+        .slider-restaurants__restaurant__food div h2 {
+          font-size: 18px;
+          margin: 0;
+          position: relative;
+          top: 50%;
+          -moz-transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
+    .slider-restaurants__restaurant p {
+      border-bottom: 1px solid #585858;
+      font-size: 11px;
+      margin: 0 8px;
+      padding: 5px 0;
+      text-align: center; }
+    .slider-restaurants__restaurant h3 {
+      font-size: 13px;
+      text-align: center;
+      text-transform: uppercase; }
+    .slider-restaurants__restaurant a {
+      color: white;
+      display: block;
+      text-decoration: none;
+      margin: 0 8px 10px;
+      padding: 10px 2px;
+      text-align: center;
+      background: #ff0000;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, #ff0000 0%, #c22629 100%);
+      /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff0000), color-stop(100%, #c22629));
+      /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, #ff0000 0%, #c22629 100%);
+      /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, #ff0000 0%, #c22629 100%);
+      /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, #ff0000 0%, #c22629 100%);
+      /* IE10+ */
+      background: linear-gradient(to bottom, #ff0000 0%, #c22629 100%);
+      /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+      /* IE6-9 */ }

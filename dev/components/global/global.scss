@@ -1,0 +1,10 @@
+@import "../global/vars";
+*{
+	box-sizing: border-box;
+}
+figure{
+	margin: 0;
+}
+.container{
+	margin-left: $menu-size;
+}

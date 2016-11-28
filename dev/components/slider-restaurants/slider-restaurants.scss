@@ -1,0 +1,64 @@
+@import "../global/vars";
+.slider-restaurants{
+	margin: 0 38px;
+	overflow: hidden;
+	&__restaurant{
+		border: 1px solid;
+		float: left;
+		margin-right: 8px;
+		width: calc(25% - 8px);
+		&__logo{
+			height: 100px;
+			overflow: hidden;
+			padding: 10px;
+			img{
+				height: 100%;
+				width: 100%;	
+			}
+		}
+		&__food{
+			position: relative;
+			img{
+				width: 100%;
+			}
+			div{
+				background: rgba(0,0,0,0.3);
+				color: white;
+				height: 100%;
+				position: absolute;
+				text-align: center;
+				text-transform: uppercase;
+				top: 0;
+				width: 100%;
+				h2{
+					font-size: 18px;
+					margin: 0;
+					position: relative;
+					top: 50%;
+					@include prefix(transform, translateY(-50%));
+				}
+			}
+		}
+		p{
+			border-bottom: 1px solid $gray;
+			font-size: 11px;
+			margin: 0 8px;
+			padding: 5px 0;
+			text-align: center;
+		}
+		h3{
+			font-size: 13px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		a{
+			color: white;
+			display: block;
+			text-decoration: none;
+			margin: 0 8px 10px;
+			padding: 10px 2px;
+			text-align: center;
+			@include linearGradient($main-red, #c22629);
+		}
+	}
+}

@@ -1,0 +1,64 @@
+.menu {
+  background: #ff0000;
+  color: white;
+  height: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 89px;
+  z-index: 9999; }
+  .menu__title {
+    font-size: 13px;
+    margin-bottom: 35px; }
+  .menu__items {
+    list-style: none;
+    margin: 0;
+    padding: 0 15px; }
+  .menu__item {
+    margin: 0 0 76px;
+    position: relative; }
+    .menu__item--hamburger span {
+      background: url("../images/hamburguer-icon.png"); }
+      .menu__item--hamburger span.is-active {
+        background: url("../images/hamburguer-icon-active.png"); }
+    .menu__item--hamburger .submenu {
+      color: black;
+      width: 330px; }
+    .menu__item--calendar span {
+      background: url("../images/calendar-icon.png"); }
+      .menu__item--calendar span.is-active {
+        background: url("../images/calendar-icon-active.png"); }
+    .menu__item--chat span {
+      background: url("../images/chat-icon.png"); }
+      .menu__item--chat span.is-active {
+        background: url("../images/chat-icon-active.png"); }
+    .menu__item--contact span {
+      background: url("../images/contact-icon.png"); }
+      .menu__item--contact span.is-active {
+        background: url("../images/contact-icon-active.png"); }
+    .menu__item span {
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      display: block;
+      height: 35px;
+      text-indent: -9999; }
+      .menu__item span.is-active {
+        background-size: 100% 100%; }
+    .menu__item .submenu {
+      background: white;
+      border-radius: 10px;
+      display: none;
+      left: calc(89px - 20px);
+      list-style: none;
+      padding: 0 15px;
+      position: absolute;
+      text-transform: uppercase;
+      top: 0; }
+      .menu__item .submenu li {
+        background: url("../images/arrow-right.png") no-repeat;
+        background-position: 97% center;
+        border-bottom: 1px solid #585858;
+        padding: 10px 0; }
+        .menu__item .submenu li:last-of-type {
+          border-bottom: 0; }
