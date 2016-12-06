@@ -20,28 +20,90 @@
 	&__item{
 		margin: 0 0 76px;
 		position: relative;
+		.submenu{
+			background: white;
+			border-radius: 10px;
+			color: black;
+			display: none;
+			left: calc(#{$menu-size} - 20px);
+			list-style: none;
+			padding: 0 15px;
+			position: absolute;
+			text-transform: uppercase;
+			top: 0;	
+			width: 330px;
+			li{
+				border-bottom: 1px solid $gray;
+				padding: 10px 0;
+				&:last-of-type{
+					border-bottom: 0;
+				}
+			}
+		}
 		&--hamburger{
-			span{
+			>span{
 				background: url('../images/hamburguer-icon.png');
 				&.is-active{
 					background: url('../images/hamburguer-icon-active.png');
 				}
 			}
 			.submenu{
-				color: black;
-				width: 330px;
+				li{
+					background: url('../images/arrow-right.png') no-repeat;
+					background-position: 97% center;
+				}
 			}
 		}
 		&--calendar{
-			span{
+			>span{
 				background: url('../images/calendar-icon.png');	
 				&.is-active{
 					background: url('../images/calendar-icon-active.png');
 				}
 			}
+			.submenu{
+				max-height: 400px;
+				overflow-y: scroll;
+				top: -100px;
+				h4{
+					margin-bottom: 0;
+				}
+				&__items{
+					text-align: right;
+					a{
+						color: black;
+						margin-right: 10px;
+						text-decoration: none;
+						&.is-active{
+							font-weight: bold;
+						}
+					}
+				}
+				>li{
+					border-bottom: 0;
+					ul{
+						list-style: none;
+						padding: 0;
+						li{
+							background: url('../images/arrow-right.png') no-repeat;
+							background-position: 97% center;
+							border-top: 1px solid $gray;
+							border-bottom: 0;
+							span{
+								position: relative;
+								text-transform: none;
+								top: -15px;
+							}
+						}	
+					}
+				}
+				>li:nth-of-type(n+2){
+					display: none;
+				}
+			}
 		}
 		&--chat{
-			span{
+			>span{
 				background: url('../images/chat-icon.png');	
 				&.is-active{
 					background: url('../images/chat-icon-active.png');
@@ -49,14 +111,14 @@
 			}
 		}
 		&--contact{
-			span{
+			>span{
 				background: url('../images/contact-icon.png');	
 				&.is-active{
 					background: url('../images/contact-icon-active.png');
 				}
 			}
 		}
-		span{
+		>span{
 			background-position: center;
 			background-repeat: no-repeat;
 			cursor: pointer;
@@ -67,25 +129,6 @@
 				background-size: 100% 100%;
 			}
 		}
-		.submenu{
-			background: white;
-			border-radius: 10px;
-			display: none;
-			left: calc(#{$menu-size} - 20px);
-			list-style: none;
-			padding: 0 15px;
-			position: absolute;
-			text-transform: uppercase;
-			top: 0;	
-			li{
-				background: url('../images/arrow-right.png') no-repeat;
-				background-position: 97% center;
-				border-bottom: 1px solid $gray;
-				padding: 10px 0;
-				&:last-of-type{
-					border-bottom: 0;
-				}
-			}
-		}
+		
 	}
 }

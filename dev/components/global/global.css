@@ -5,4 +5,13 @@ figure {
   margin: 0; }
 
 .container {
-  margin-left: 89px; }
+  margin-left: 89px;
+  position: relative; }
+
+.popup {
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%; }
