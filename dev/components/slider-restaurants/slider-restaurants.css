@@ -2,9 +2,10 @@
   margin: 0 38px;
   overflow: hidden; }
   .slider-restaurants__restaurant {
-    border: 1px solid;
+    cursor: pointer;
     float: left;
     margin-right: 8px;
+    text-align: center;
     width: calc(25% - 8px); }
     .slider-restaurants__restaurant__logo {
       height: 100px;
@@ -14,9 +15,14 @@
         height: 100%;
         width: 100%; }
     .slider-restaurants__restaurant__food {
+      overflow: hidden;
       position: relative; }
       .slider-restaurants__restaurant__food img {
         width: 100%; }
+      .slider-restaurants__restaurant__food--full {
+        margin-bottom: 10px; }
+        .slider-restaurants__restaurant__food--full img {
+          width: 150%; }
       .slider-restaurants__restaurant__food div {
         background: rgba(0, 0, 0, 0.3);
         color: white;
@@ -36,6 +42,11 @@
           -o-transform: translateY(-50%);
           -ms-transform: translateY(-50%);
           transform: translateY(-50%); }
+    .slider-restaurants__restaurant__qualification {
+      margin-top: 5px;
+      text-align: center; }
+      .slider-restaurants__restaurant__qualification img {
+        width: 160px; }
     .slider-restaurants__restaurant p {
       border-bottom: 1px solid #585858;
       font-size: 11px;

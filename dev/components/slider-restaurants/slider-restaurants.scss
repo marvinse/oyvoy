@@ -3,9 +3,10 @@
 	margin: 0 38px;
 	overflow: hidden;
 	&__restaurant{
-		border: 1px solid;
+		cursor: pointer;
 		float: left;
 		margin-right: 8px;
+		text-align: center;
 		width: calc(25% - 8px);
 		&__logo{
 			height: 100px;
@@ -17,9 +18,16 @@
 			}
 		}
 		&__food{
+			overflow: hidden;
 			position: relative;
 			img{
 				width: 100%;
+			}
+			&--full{
+				margin-bottom: 10px;
+				img{
+					width: 150%;
+				}
 			}
 			div{
 				background: rgba(0,0,0,0.3);
@@ -37,6 +45,13 @@
 					top: 50%;
 					@include prefix(transform, translateY(-50%));
 				}
+			}
+		}
+		&__qualification{
+			margin-top: 5px;
+			text-align: center;
+			img{
+				width: 160px;
 			}
 		}
 		p{

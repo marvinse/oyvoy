@@ -1,15 +1,30 @@
 <div class="slider-restaurants__restaurant">
-	<figure class="slider-restaurants__restaurant__logo" >
+	{{#if small-image}}
+	<img src="images/examples/full-lugar-card-placeholder.png" alt="">
+	{{>slider-restaurants__popup}}
+	{{/if}}
+	{{#if full-image}}
+	<img src="images/examples/full-promo-card-placeholder.png" alt="">
+	
+	{{/if}}
+	<!--<figure class="slider-restaurants__restaurant__logo" >
 		<img src="images/restaurants/logo-restaurant.png" />
 	</figure>	
-	<figure class="slider-restaurants__restaurant__food">
+	<figure class="slider-restaurants__restaurant__food slider-restaurants__restaurant__food--{{class}}">
 		<img src="images/restaurants/food-small-example.png" alt="">
 		<div>
-			<h2>Cuidad saporro</h2>
+			<h2>{{title}}</h2>
 		</div>
 	</figure>
+	{{#if small-image}}
 	<p>Restaurante japonés, con amplio menú que incluye una gran variedad de platos como sushi, tempura, sopas y teriyaki.</p>
-	<img src="" class="slider-restaurants__restaurant__calification" />
+	<figure class="slider-restaurants__restaurant__qualification">
+		<img src="images/2half-stars.png" class="slider-restaurants__restaurant__calification" />
+	</figure>
 	<h3>Abierto ahora</h3>
+	{{/if}}
 	<a href="#">Ver restaurant</a>
+	{{#if full-image}}
+	<a href="#">Ver oferta</a>
+	{{/if}}-->
 </div>
