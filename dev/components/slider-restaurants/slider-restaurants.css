@@ -1,12 +1,14 @@
 .slider-restaurants {
-  margin: 0 38px;
-  overflow: hidden; }
+  padding: 0 38px;
+  position: relative; }
   .slider-restaurants__restaurant {
     cursor: pointer;
     float: left;
     margin-right: 8px;
     text-align: center;
     width: calc(25% - 8px); }
+    .slider-restaurants__restaurant > img {
+      min-height: 430px; }
     .slider-restaurants__restaurant__logo {
       height: 100px;
       overflow: hidden;
@@ -80,3 +82,84 @@
       /* W3C */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
       /* IE6-9 */ }
+  .slider-restaurants__popup {
+    background: white;
+    display: none;
+    height: 100%;
+    left: 0;
+    margin: 0 38px;
+    overflow-y: scroll;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3; }
+    .slider-restaurants__popup__header figure {
+      float: left;
+      width: 150px; }
+      .slider-restaurants__popup__header figure img {
+        width: 100%; }
+    .slider-restaurants__popup__header__main-image {
+      float: left;
+      height: 91px;
+      overflow: hidden;
+      position: relative;
+      width: calc(100% - 150px); }
+      .slider-restaurants__popup__header__main-image > img {
+        left: 0;
+        position: absolute;
+        width: 100%; }
+      .slider-restaurants__popup__header__main-image h1 {
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        height: 100%;
+        margin: 0;
+        padding: 25px;
+        position: absolute;
+        text-transform: uppercase;
+        width: 100%; }
+      .slider-restaurants__popup__header__main-image div {
+        float: right;
+        margin: 15px;
+        position: relative; }
+        .slider-restaurants__popup__header__main-image div img {
+          height: 22px; }
+    .slider-restaurants__popup__container {
+      clear: both;
+      overflow: hidden;
+      padding: 15px; }
+      .slider-restaurants__popup__container h4 {
+        text-transform: uppercase; }
+    .slider-restaurants__popup__general-info__site {
+      float: right; }
+    .slider-restaurants__popup__left {
+      width: 40%; }
+      .slider-restaurants__popup__left .no-available {
+        background-image: url("../images/no.png"); }
+      .slider-restaurants__popup__left .available {
+        background-image: url("../images/yes.png"); }
+      .slider-restaurants__popup__left .no-available, .slider-restaurants__popup__left .available {
+        background-repeat: no-repeat;
+        background-position: center right;
+        max-width: 250px; }
+    .slider-restaurants__popup__right {
+      padding-left: 15px;
+      width: 50%; }
+    .slider-restaurants__popup__left, .slider-restaurants__popup__right {
+      float: left; }
+    .slider-restaurants__popup__directions h4 {
+      float: left;
+      padding-right: 20px; }
+      .slider-restaurants__popup__directions h4:last-of-type {
+        margin-left: 60px; }
+    .slider-restaurants__popup__review h4 {
+      float: left;
+      margin: 0; }
+    .slider-restaurants__popup__review a {
+      color: #585858;
+      font-style: italic;
+      float: right;
+      text-decoration: none; }
+    .slider-restaurants__popup__score > * {
+      display: inline-block; }
+    .slider-restaurants__popup__score img {
+      max-width: 150px; }

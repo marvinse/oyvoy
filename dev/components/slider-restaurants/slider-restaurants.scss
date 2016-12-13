@@ -1,13 +1,16 @@
 @import "../global/vars";
 .slider-restaurants{
-	margin: 0 38px;
-	overflow: hidden;
+	padding: 0 38px;
+	position: relative;
 	&__restaurant{
 		cursor: pointer;
 		float: left;
 		margin-right: 8px;
 		text-align: center;
 		width: calc(25% - 8px);
+		>img{
+			min-height: 430px;
+		}
 		&__logo{
 			height: 100px;
 			overflow: hidden;
@@ -74,6 +77,120 @@
 			padding: 10px 2px;
 			text-align: center;
 			@include linearGradient($main-red, #c22629);
+		}
+	}
+	&__popup{
+		background: white;
+		display: none;
+		height: 100%;
+		left: 0;
+		margin: 0 38px;
+		overflow-y: scroll;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 3;
+		&__header{
+			figure{
+				float: left;
+				width: 150px;
+				img{
+					width: 100%;
+				}	
+			}
+			&__main-image{
+				float: left;
+				height: 91px;
+				overflow: hidden;
+				position: relative;
+				width: calc(100% - 150px);
+				>img{
+					left: 0;
+					position: absolute;
+					width: 100%;
+				}
+				h1{
+					background: rgba(0,0,0,.5);
+					color: white;
+					height: 100%;
+					margin: 0;
+					padding: 25px;
+					position: absolute;
+					text-transform: uppercase;
+					width: 100%;
+				}
+				div{
+					float: right;
+					margin: 15px;
+					position: relative;
+					img{
+						height: 22px;
+					}
+				}
+			}
+		}
+		&__container{
+			clear: both;
+			overflow: hidden;
+			padding: 15px;
+			h4{
+				text-transform: uppercase;
+			}
+		}
+		&__general-info{
+			&__site{
+				float: right;
+			}	
+		}
+		&__left{
+			width: 40%;
+			.no-available{
+				background-image: url('../images/no.png');
+			}
+			.available{
+				background-image: url('../images/yes.png');
+			}
+			.no-available, .available{
+				background-repeat: no-repeat;
+				background-position: center right;
+				max-width: 250px;
+			}
+		}
+		&__right{
+    		padding-left: 15px;
+			width: 50%;
+		}
+		&__left, &__right{
+			float: left;
+		}
+		&__directions{
+			h4{
+				float: left;
+				padding-right: 20px;
+				&:last-of-type{
+					margin-left: 60px;
+				}
+			}
+		}
+		&__review{
+			h4{
+				float: left;
+				margin: 0;
+			}
+			a{
+				color: $gray;
+				font-style: italic;
+				float: right;
+				text-decoration: none;
+			}
+		}
+		&__score{
+			> *{
+				display: inline-block;
+			}
+			img{
+				max-width: 150px;
+			}
 		}
 	}
 }

@@ -6,8 +6,12 @@ figure{
 	margin: 0;
 }
 .container{
+	height: 100%;
 	margin-left: $menu-size;
 	position: relative;
+}
+.clear{
+	clear: both;
 }
 .popup{
 	background: rgba(0,0,0,0.5);
@@ -16,4 +20,15 @@ figure{
 	position: absolute;
 	top: 0;
 	width: 100%;
+}
+.right-arrow{
+	position: relative;
+	&:after{
+		content: '';
+		border-bottom: 10px solid transparent;
+		border-left: 10px solid $gray;
+		border-top: 10px solid transparent;
+		margin-left: 20px;
+		position: absolute;
+	}
 }

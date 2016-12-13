@@ -9,6 +9,7 @@ var APP = window.APP = window.APP || {};
 APP.menu = (function () {
 
     var init = function (element) {
+        console.log('APP.menu');
     	bindEventsToUI();
     };
 
@@ -22,7 +23,9 @@ APP.menu = (function () {
             if( $(this).hasClass('is-active') ){
                 $('.popup').show();
             }else{
-                $('.popup').hide();
+                if( !$('.slider-restaurants__popup').is(':visible') ){
+                    $('.popup').hide();
+                }
             }
     	});
         $('.menu__item--calendar .submenu__items a').click(function(e){
@@ -43,3 +46,82 @@ APP.menu = (function () {
 }());
 
 APP.menu.init();
+'use strict';
+
+var APP = window.APP = window.APP || {};
+
+APP.slidebox = (function () {
+
+    var init = function (element) {
+        console.log('APP.slidebox');
+        createSlideBoxContainer();
+    	bindEventsToUI();
+    };
+
+    var bindEventsToUI = function(){
+    	$('.slidebox img').click(function(){
+            $('.slidebox__sliders .placeholder').attr('src',$(this).data('popup'))
+            $('.slidebox__sliders').fadeIn();
+        });
+
+        $('body').on('click','.slidebox__sliders__close',function(){
+        	$('.slidebox__sliders').fadeOut();
+        });
+    };
+
+    var createSlideBoxContainer = function(){
+    	$('body').append('<div class=\"slidebox__sliders\">\
+    		<div class=\"slidebox__sliders__container\">\
+    			<a href=\"#\" class=\"slidebox__sliders__close\"><img src=\"images/close-card-button.png\"></a>\
+    			<img class=\"placeholder\" src=\"\" \>\
+    		</div>\
+    	</div>');
+    };
+
+    return {
+        init: init
+    };
+
+}());
+
+APP.slidebox.init();
+'use strict';
+
+var APP = window.APP = window.APP || {};
+
+APP.sliderRestaurants = (function () {
+
+    var init = function (element) {
+    	console.log('APP.sliderRestaurants');
+    	bindEventsToUI();
+    };
+
+    var bindEventsToUI = function(){
+    	$('.slider-restaurants__restaurant > img').click(function(){
+    		$('.popup').show();
+    		$('.slider-restaurants__popup').fadeIn();
+    	});
+
+        $('.slider-restaurants__popup__close').click(function(e){
+            e.preventDefault();
+            $('.popup').hide();
+            $('.slider-restaurants__popup').fadeOut();
+        });
+
+        $(document).ready(function(){
+            var bannersHeight = getBannerHeight();
+            $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
+        })
+    };
+
+    var getBannerHeight = function(){
+        return parseInt($('.banner').css('height')) * 2;
+    }
+
+    return {
+        init: init
+    };
+
+}());
+
+APP.sliderRestaurants.init();
