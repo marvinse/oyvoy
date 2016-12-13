@@ -1,0 +1,26 @@
+.slidebox {
+  clear: both; }
+  .slidebox img {
+    cursor: pointer;
+    float: left;
+    padding: 10px;
+    width: 45%; }
+  .slidebox__sliders {
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 4; }
+    .slidebox__sliders__container {
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
