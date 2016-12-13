@@ -5,6 +5,7 @@ var APP = window.APP = window.APP || {};
 APP.menu = (function () {
 
     var init = function (element) {
+        console.log('APP.menu');
     	bindEventsToUI();
     };
 
@@ -18,7 +19,9 @@ APP.menu = (function () {
             if( $(this).hasClass('is-active') ){
                 $('.popup').show();
             }else{
-                $('.popup').hide();
+                if( !$('.slider-restaurants__popup').is(':visible') ){
+                    $('.popup').hide();
+                }
             }
     	});
         $('.menu__item--calendar .submenu__items a').click(function(e){

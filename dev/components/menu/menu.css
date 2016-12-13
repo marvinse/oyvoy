@@ -79,6 +79,9 @@
       background: url("../images/chat-icon.png"); }
       .menu__item--chat > span.is-active {
         background: url("../images/chat-icon-active.png"); }
+    .menu__item--chat .submenu {
+      height: 400px;
+      top: -200px; }
     .menu__item--contact > span {
       background: url("../images/contact-icon.png"); }
       .menu__item--contact > span.is-active {
