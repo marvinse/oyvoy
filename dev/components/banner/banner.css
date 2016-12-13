@@ -1,3 +1,7 @@
 .banner img {
   max-height: 100px;
   width: 100%; }
+.banner.bottom {
+  bottom: 0;
+  position: absolute;
+  width: 100%; }

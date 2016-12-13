@@ -3,4 +3,9 @@
 		max-height: 100px;
 		width: 100%;
 	}
+	&.bottom{
+		bottom: 0;
+		position: absolute;
+		width: 100%;
+	}
 }
