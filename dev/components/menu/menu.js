@@ -33,6 +33,17 @@ APP.menu = (function () {
             newListActive.siblings('li').hide();
             newListActive.show();
         });
+
+        $('.menu__item--hamburger .submenu > li').click(function(){
+            $('.menu__item--hamburger .submenu > li').hide();
+            var submenuToShow = $(this).data('submenu');
+            $('.'+submenuToShow).show();
+        });
+
+        $('.menu__item--hamburger .submenu .submenu-level2 > li h3.back').click(function(){
+            $(this).parent('li').hide();
+            $('.menu__item--hamburger .submenu > li').show();
+        });       
     };
 
     return {

@@ -498,7 +498,7 @@ figure {
       position: absolute;
       text-transform: uppercase;
       top: 0;
-      width: 330px; }
+      width: 340px; }
       .menu__item .submenu li {
         border-bottom: 1px solid #585858;
         padding: 10px 0; }
@@ -508,9 +508,71 @@ figure {
       background: url("../images/hamburguer-icon.png"); }
       .menu__item--hamburger > span.is-active {
         background: url("../images/hamburguer-icon-active.png"); }
-    .menu__item--hamburger .submenu li {
+    .menu__item--hamburger .submenu > li {
       background: url("../images/arrow-right.png") no-repeat;
-      background-position: 97% center; }
+      background-position: 97% center;
+      cursor: pointer; }
+      .menu__item--hamburger .submenu > li:hover {
+        color: #808080; }
+    .menu__item--hamburger .submenu-level2 li {
+      border-bottom: 0;
+      display: none; }
+      .menu__item--hamburger .submenu-level2 li h3.back {
+        background: url(../images/arrow-left.png) left center no-repeat;
+        cursor: pointer;
+        padding-left: 15px;
+        margin: 10px 0; }
+      .menu__item--hamburger .submenu-level2 li input, .menu__item--hamburger .submenu-level2 li textarea {
+        display: block;
+        margin-bottom: 10px;
+        padding: 2px;
+        width: 100%; }
+        .menu__item--hamburger .submenu-level2 li input[type=submit], .menu__item--hamburger .submenu-level2 li textarea[type=submit] {
+          background: #ff0000;
+          border: 0;
+          color: white;
+          font-size: 12px;
+          padding: 5px;
+          text-transform: uppercase; }
+      .menu__item--hamburger .submenu-level2 li.submenu-login label {
+        display: block;
+        margin-bottom: 5px;
+        text-transform: none;
+        font-style: italic; }
+      .menu__item--hamburger .submenu-level2 li.submenu-login .submenu-login__create-account {
+        color: black;
+        display: block;
+        font-size: 14px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        text-decoration: none;
+        text-transform: none; }
+        .menu__item--hamburger .submenu-level2 li.submenu-login .submenu-login__create-account span {
+          display: inline-block;
+          float: left;
+          font-weight: bold;
+          font-style: italic;
+          width: 50%; }
+          .menu__item--hamburger .submenu-level2 li.submenu-login .submenu-login__create-account span:last-of-type {
+            text-align: right; }
+      .menu__item--hamburger .submenu-level2 li.submenu-login .submenu-login__facebook {
+        background: #0071bd;
+        clear: both;
+        color: white;
+        display: block;
+        font-size: 12px;
+        padding: 5px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase; }
+      .menu__item--hamburger .submenu-level2 li.submenu-about h3 {
+        border-bottom: 1px solid #585858;
+        padding-bottom: 10px; }
+        .menu__item--hamburger .submenu-level2 li.submenu-about h3.back {
+          background-position: left 3px; }
+      .menu__item--hamburger .submenu-level2 li.submenu-about p {
+        font-size: 12px;
+        text-transform: none; }
     .menu__item--calendar > span {
       background: url("../images/calendar-icon.png"); }
       .menu__item--calendar > span.is-active {

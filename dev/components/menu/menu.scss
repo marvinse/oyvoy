@@ -31,7 +31,7 @@
 			position: absolute;
 			text-transform: uppercase;
 			top: 0;	
-			width: 330px;
+			width: 340px;
 			li{
 				border-bottom: 1px solid $gray;
 				padding: 10px 0;
@@ -48,9 +48,90 @@
 				}
 			}
 			.submenu{
-				li{
+				>li{
 					background: url('../images/arrow-right.png') no-repeat;
 					background-position: 97% center;
+					cursor: pointer;
+					&:hover{
+						color: #808080;
+					}
+				}
+				&-level2{
+					li{
+						border-bottom: 0;
+						display: none;
+						h3.back{
+							background: url(../images/arrow-left.png) left center no-repeat;
+	    					cursor: pointer;
+	    					padding-left: 15px;
+	    					margin: 10px 0;
+						}
+						input,textarea{
+							display: block;
+							margin-bottom: 10px;
+							padding: 2px;
+							width: 100%;
+							&[type=submit]{
+								background: $main-red;
+								border: 0;
+								color: white;
+								font-size: 12px;
+								padding: 5px;
+								text-transform: uppercase;
+							}
+						}
+						&.submenu-login{
+							label{
+								display: block;
+								margin-bottom: 5px;
+								text-transform: none;
+								font-style: italic;
+							}
+							.submenu-login__create-account{
+								color: black;
+								display: block;
+								font-size: 14px;
+								margin-bottom: 10px;
+								overflow: hidden;
+								text-decoration: none;
+								text-transform: none;
+								span{
+									display: inline-block;
+									float: left;
+									font-weight: bold;
+									font-style: italic;
+									width: 50%;
+									&:last-of-type{
+										text-align: right;
+									}
+								}
+							}
+							.submenu-login__facebook{
+								background: $fb-color;
+								clear: both;
+								color: white;
+								display: block;
+								font-size: 12px;
+								padding: 5px;
+								text-align: center;
+								text-decoration: none;
+								text-transform: uppercase;
+							}
+						}
+						&.submenu-about{
+							h3{
+								border-bottom: 1px solid $gray;
+								padding-bottom: 10px;
+								&.back{
+									background-position: left 3px;
+								}
+							}
+							p{
+								font-size: 12px;
+								text-transform: none;
+							}
+						}
+					}
 				}
 			}
 		}
