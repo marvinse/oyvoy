@@ -21,6 +21,15 @@ APP.sliderRestaurants = (function () {
             $('.slider-restaurants__popup').fadeOut();
         });
 
+        $('.slider-restaurants__popup .create-review, .slider-restaurants__popup__new-review__close').click(function(){
+            $('.slider-restaurants__popup__new-review').toggle();
+        });
+
+        $('.slider-restaurants__popup__new-review__qualification img').on('mouseover click',function(){
+            $(this).parent().removeClass('slider-restaurants__popup__new-review__qualification--1 slider-restaurants__popup__new-review__qualification--2 slider-restaurants__popup__new-review__qualification--3 slider-restaurants__popup__new-review__qualification--4 slider-restaurants__popup__new-review__qualification--5');
+            $(this).parent().addClass($(this).data('class'));
+        });
+
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
             $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
