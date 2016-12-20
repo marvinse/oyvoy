@@ -123,8 +123,26 @@
 					float: right;
 					margin: 15px;
 					position: relative;
-					img{
+					img,.slider-restaurants__add-to-favorites{
 						height: 22px;
+					}
+					.slider-restaurants__add-to-favorites{
+						background-image: url('../images/bookmark-off.png');
+						background-repeat: no-repeat;
+						background-size: 100%;
+						display: inline-block;
+						position: relative;
+						width: 17px;
+						&--on{
+							background-image: url('../images/bookmark-on.png');
+						}
+						img{
+							display: none;
+							height: initial;
+							left: -142px;
+							position: absolute;
+							top: 100%;
+						}
 					}
 				}
 			}

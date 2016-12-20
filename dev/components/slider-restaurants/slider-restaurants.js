@@ -30,6 +30,17 @@ APP.sliderRestaurants = (function () {
             $(this).parent().addClass($(this).data('class'));
         });
 
+        $('.slider-restaurants__popup .slider-restaurants__add-to-favorites').click(function(e){
+            e.preventDefault();
+            var self = $(this);
+            $(this).toggleClass('slider-restaurants__add-to-favorites--on');
+            if( $(this).hasClass('slider-restaurants__add-to-favorites--on') ){
+                $(this).find('img').fadeIn('1000',function(){
+                    $(this).delay(2000).fadeOut('1000'); 
+                });
+            }
+        });
+
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
             $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
