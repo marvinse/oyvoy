@@ -18,10 +18,37 @@
 		z-index: 4;
 		&__container{
 			left: 0;
+			margin: auto;
+			max-width: 510px;
+			overflow: hidden; 
 			position: absolute;
 			right: 0;
 			top: 50%;
 			@include prefix(transform, translateY(-50%));
+		}
+		&__image-container{
+			position: relative;
+		}
+		&__close{
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			z-index: 1;
+		}
+		&__control-left,&__control-right{
+			bottom: 0;
+			cursor: pointer;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+		}
+		&__control-left{
+			left: 0;
+		}
+		&__control-right{
+			right: 0;
 		}
 	}
 }
