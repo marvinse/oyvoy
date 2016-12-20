@@ -1,4 +1,5 @@
 .banner{
+	overflow: hidden;
 	img{
 		max-height: 100px;
 		width: 100%;
@@ -8,4 +9,8 @@
 		position: absolute;
 		width: 100%;
 	}
+}
+//overwrite plugin styles
+.bx-wrapper .bx-viewport{
+	border: 0;
 }

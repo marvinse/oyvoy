@@ -1,7 +1,12 @@
-.banner img {
-  max-height: 100px;
-  width: 100%; }
-.banner.bottom {
-  bottom: 0;
-  position: absolute;
-  width: 100%; }
+.banner {
+  overflow: hidden; }
+  .banner img {
+    max-height: 100px;
+    width: 100%; }
+  .banner.bottom {
+    bottom: 0;
+    position: absolute;
+    width: 100%; }
+
+.bx-wrapper .bx-viewport {
+  border: 0; }
