@@ -1,0 +1,13 @@
+.full-modal {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 9999; }
+  .full-modal > img {
+    height: 100%;
+    width: 100%; }
+  .full-modal__close {
+    position: absolute;
+    right: 20px;
+    top: 20px; }
