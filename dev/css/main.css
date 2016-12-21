@@ -850,6 +850,13 @@ figure {
       background: url("../images/contact-icon.png"); }
       .menu__item--contact > span.is-active {
         background: url("../images/contact-icon-active.png"); }
+    .menu__item--contact .submenu {
+      top: -300px; }
+      .menu__item--contact .submenu h4 {
+        border-bottom: 1px solid #585858;
+        padding-bottom: 20px; }
+      .menu__item--contact .submenu iframe {
+        margin-bottom: 15px; }
     .menu__item > span {
       background-position: center;
       background-repeat: no-repeat;
