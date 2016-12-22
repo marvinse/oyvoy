@@ -10,9 +10,13 @@ APP.fullModal = (function () {
     };
 
     var bindEventsToUI = function(){
-    	setTimeout(function(){
-            $('.full-modal').fadeOut();
-        },5000);
+        if(Cookies.get('modal')!='activated'){//activate modal just the first time
+            $('.full-modal').css('display','block');
+            setTimeout(function(){
+                $('.full-modal').fadeOut();
+            },5000); 
+            Cookies.set('modal', 'activated');  
+        }
 
         $('.full-modal__close').click(function(e){
             e.preventDefault();

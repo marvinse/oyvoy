@@ -1,9 +1,12 @@
 .full-modal {
+  display: none;
   left: 0;
   position: absolute;
   top: 0;
-  width: 100%;
-  z-index: 9999; }
+  width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .full-modal {
+      z-index: 9999; } }
   .full-modal > img {
     height: 100%;
     width: 100%; }
