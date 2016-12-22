@@ -1,22 +1,39 @@
 .menu {
   background: #ff0000;
+  bottom: 0;
   color: white;
-  height: 100%;
   padding: 10px;
   position: fixed;
-  top: 0;
-  width: 89px;
+  width: 100%;
   z-index: 9999; }
+  @media only screen and (min-width: 768px) {
+    .menu {
+      height: 100%;
+      top: 0;
+      width: 89px; } }
   .menu__title {
+    display: none;
     font-size: 13px;
     margin-bottom: 35px; }
+    @media only screen and (min-width: 768px) {
+      .menu__title {
+        display: block; } }
   .menu__items {
     list-style: none;
     margin: 0;
-    padding: 0 15px; }
+    padding: 0; }
+    @media only screen and (min-width: 768px) {
+      .menu__items {
+        padding: 0 15px; } }
   .menu__item {
-    margin: 0 0 76px;
-    position: relative; }
+    float: left;
+    position: relative;
+    width: 25%; }
+    @media only screen and (min-width: 768px) {
+      .menu__item {
+        float: none;
+        margin: 0 0 76px;
+        width: 100%; } }
     .menu__item .submenu {
       background: white;
       border-radius: 10px;

@@ -17,3 +17,7 @@
 	// Output standard non-prefixed declaration
 	#{$property}: $value;
 }
+
+@mixin respond-to($breakpoint) {
+    @media only screen and (min-width: $breakpoint) { @content; }
+}

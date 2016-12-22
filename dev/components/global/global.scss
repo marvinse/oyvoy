@@ -6,9 +6,13 @@ figure{
 	margin: 0;
 }
 .container{
-	height: 100%;
-	margin-left: $menu-size;
+	padding-bottom: 55px;
 	position: relative;
+	@include respond-to($tablet-portrait){
+		height: 100%;
+        margin-left: $menu-size;
+        padding-bottom: 0;
+    }
 }
 .clear{
 	clear: both;

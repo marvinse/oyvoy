@@ -43,7 +43,9 @@ APP.sliderRestaurants = (function () {
 
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
-            $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
+            }
         })
     };
 

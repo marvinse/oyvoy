@@ -1,25 +1,43 @@
 @import "../global/vars";
 .menu{
 	background: $main-red;
+	bottom: 0;
 	color: white;
-	height: 100%;
 	padding: 10px;
 	position: fixed;
-	top: 0;
-	width: $menu-size;
+	width: 100%;
 	z-index: 9999;
+	@include respond-to($tablet-portrait){
+		height: 100%;
+		top: 0;
+		width: $menu-size;
+		
+	}
 	&__title{
+		display: none;
 		font-size: 13px;
 		margin-bottom: 35px;
+		@include respond-to($tablet-portrait){
+			display: block;
+		}
 	}
 	&__items{
 		list-style: none;
 		margin: 0;
-		padding: 0 15px;
+		padding: 0;
+		@include respond-to($tablet-portrait){
+			padding: 0 15px;
+		}
 	}
 	&__item{
-		margin: 0 0 76px;
+		float: left;
 		position: relative;
+		width: 25%;
+		@include respond-to($tablet-portrait){
+			float: none;
+			margin: 0 0 76px;
+			width: 100%;
+		}
 		.submenu{
 			background: white;
 			border-radius: 10px;

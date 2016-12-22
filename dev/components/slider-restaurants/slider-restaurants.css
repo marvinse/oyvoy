@@ -6,7 +6,10 @@
     float: left;
     margin-right: 8px;
     text-align: center;
-    width: calc(25% - 8px); }
+    width: calc(50% - 8px); }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants__restaurant {
+        width: calc(25% - 8px); } }
     .slider-restaurants__restaurant > img {
       min-height: 430px; }
     .slider-restaurants__restaurant__logo {
