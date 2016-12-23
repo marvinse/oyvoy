@@ -66,6 +66,8 @@
 				}
 			}
 			.submenu{
+				max-height: 480px;
+				overflow-y: scroll;
 				>li{
 					background: url('../images/arrow-right.png') no-repeat;
 					background-position: 97% center;
@@ -75,7 +77,7 @@
 					}
 				}
 				&-level2{
-					li{
+					>li{
 						border-bottom: 0;
 						display: none;
 						h3.back{
@@ -147,6 +149,53 @@
 							p{
 								font-size: 12px;
 								text-transform: none;
+							}
+						}
+						&.submenu-favorites{
+							>h3{
+								border-bottom: 1px solid $gray;
+								padding-bottom: 10px;
+								&.back{
+									background-position: left 3px;
+								}
+							}
+							ul{
+								list-style: none;
+								padding: 0;
+								li{
+									background: url('../images/arrow-right.png') 97% center no-repeat;
+									span{
+										position: relative;
+									    text-transform: none;
+									    top: -15px;
+									}
+								}
+							}
+							.submenu-favorites__delete{
+								margin-right: 10px;
+								position: relative;
+								top: -10px;
+								img{
+									height: 20px;
+								}
+							}
+							.submenu-favorites__confirmation{
+								width: 80%;
+								>a{
+									color: white;
+									padding: 5px;
+									text-decoration: none;
+								}
+								&__no{
+									background: $gray;
+								}
+								&__yes{
+									background: $main-red;
+								}
+								h3{
+									font-size: 15px;
+									text-transform: none;
+								}
 							}
 						}
 					}
