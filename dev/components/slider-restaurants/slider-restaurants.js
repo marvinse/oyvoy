@@ -41,6 +41,13 @@ APP.sliderRestaurants = (function () {
             }
         });
 
+        $('.slider-restaurants__share').click(function(){
+            FB.ui({
+              method: 'share',
+              href: 'http://www.example.com/',
+            }, function(response){});
+        });
+
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
             if (window.matchMedia("(min-width: 768px)").matches) {
