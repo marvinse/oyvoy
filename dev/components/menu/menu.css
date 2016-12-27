@@ -56,8 +56,8 @@
       .menu__item--hamburger > span.is-active {
         background: url("../images/hamburguer-icon-active.png"); }
     .menu__item--hamburger .submenu {
-      max-height: 480px;
-      overflow-y: scroll; }
+      max-height: 500px;
+      overflow-y: auto; }
       .menu__item--hamburger .submenu > li {
         background: url("../images/arrow-right.png") no-repeat;
         background-position: 97% center;
@@ -173,7 +173,7 @@
         background: url("../images/calendar-icon-active.png"); }
     .menu__item--calendar .submenu {
       max-height: 400px;
-      overflow-y: scroll;
+      overflow-y: auto;
       top: -100px; }
       .menu__item--calendar .submenu h4 {
         margin-bottom: 0; }
