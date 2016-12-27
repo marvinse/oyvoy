@@ -1,3 +1,4 @@
+@import "../global/vars";
 .banner{
 	overflow: hidden;
 	img{
@@ -13,4 +14,5 @@
 //overwrite plugin styles
 .bx-wrapper .bx-viewport{
 	border: 0;
+	@include prefix(box-shadow, none);
 }

@@ -12,6 +12,7 @@
 			width: calc(25% - 8px);
 		}
 		>img{
+			display: inline-block;
 			min-height: 430px;
 		}
 		&__logo{
@@ -333,6 +334,32 @@
 			}
 			img{
 				max-width: 150px;
+			}
+		}
+	}
+	&__controllers{
+		&__left, &__right{
+			bottom: 0;
+			height: 28px;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			a{
+				display: inline-block;
+				height: 28px;
+				width: 18px;
+			}
+		}
+		&__left{
+			left: 38px;
+			a{
+				background: url('../images/controller-left.png') no-repeat;
+			}
+		}
+		&__right{
+			right: 38px;
+			a{
+				background: url('../images/controller-right.png') no-repeat;
 			}
 		}
 	}

@@ -53,6 +53,18 @@ APP.sliderRestaurants = (function () {
             if (window.matchMedia("(min-width: 768px)").matches) {
                 $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
             }
+
+            var slider = $('.slider-restaurants__container').bxSlider({
+                slideWidth: 9999,
+                minSlides: 4,
+                maxSlides: 4,
+                moveSlides: 2,
+                pager: false,
+                nextSelector: '.slider-restaurants__controllers__right',
+                prevSelector: '.slider-restaurants__controllers__left',
+                nextText: '',
+                prevText: ''
+            });
         })
     };
 

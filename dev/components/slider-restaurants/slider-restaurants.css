@@ -11,6 +11,7 @@
       .slider-restaurants__restaurant {
         width: calc(25% - 8px); } }
     .slider-restaurants__restaurant > img {
+      display: inline-block;
       min-height: 430px; }
     .slider-restaurants__restaurant__logo {
       height: 100px;
@@ -278,3 +279,21 @@
       display: inline-block; }
     .slider-restaurants__popup__score img {
       max-width: 150px; }
+  .slider-restaurants__controllers__left, .slider-restaurants__controllers__right {
+    bottom: 0;
+    height: 28px;
+    margin: auto;
+    position: absolute;
+    top: 0; }
+    .slider-restaurants__controllers__left a, .slider-restaurants__controllers__right a {
+      display: inline-block;
+      height: 28px;
+      width: 18px; }
+  .slider-restaurants__controllers__left {
+    left: 38px; }
+    .slider-restaurants__controllers__left a {
+      background: url("../images/controller-left.png") no-repeat; }
+  .slider-restaurants__controllers__right {
+    right: 38px; }
+    .slider-restaurants__controllers__right a {
+      background: url("../images/controller-right.png") no-repeat; }
