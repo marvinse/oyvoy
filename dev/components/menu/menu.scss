@@ -169,6 +169,12 @@
 									    text-transform: none;
 									    top: -15px;
 									}
+									&.active{
+										background: none;
+										img{
+											margin-left: 10px;
+										}
+									}
 								}
 							}
 							.submenu-favorites__delete{
@@ -180,9 +186,13 @@
 								}
 							}
 							.submenu-favorites__confirmation{
+								display: none;
 								width: 80%;
 								>a{
 									color: white;
+									float: left;
+									line-height: 28px;
+									margin: 0;
 									padding: 5px;
 									text-decoration: none;
 								}
@@ -193,7 +203,10 @@
 									background: $main-red;
 								}
 								h3{
+									float: left;
 									font-size: 15px;
+									line-height: 38px;
+									margin: 0 0 0 10px;
 									text-transform: none;
 								}
 							}

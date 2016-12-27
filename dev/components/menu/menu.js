@@ -43,7 +43,29 @@ APP.menu = (function () {
         $('.menu__item--hamburger .submenu .submenu-level2 > li h3.back').click(function(){
             $(this).parent('li').hide();
             $('.menu__item--hamburger .submenu > li').show();
-        });       
+        }); 
+
+        $('.menu__item--hamburger .submenu-favorites__delete').click(function(e){
+            e.preventDefault();
+            $(this).hide();
+            $(this).parent('li').addClass('active');
+            $(this).parent('li').find('.submenu-favorites__event').hide();
+            $(this).siblings('.submenu-favorites__confirmation').show();
+        });   
+
+        $('.menu__item--hamburger .submenu-favorites__confirmation__no').click(function(e){
+            e.preventDefault();
+            $(this).parent('.submenu-favorites__confirmation').hide();
+            $(this).closest('li').removeClass('active');
+            $(this).closest('li').find('.submenu-favorites__event').show();
+            $(this).closest('li').find('.submenu-favorites__delete').show();     
+        });
+
+        $('.menu__item--hamburger .submenu-favorites__confirmation__yes').click(function(e){
+            e.preventDefault();
+            $(this).closest('li').remove();
+        });
+
     };
 
     return {

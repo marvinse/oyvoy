@@ -137,6 +137,10 @@
               position: relative;
               text-transform: none;
               top: -15px; }
+            .menu__item--hamburger .submenu-level2 > li.submenu-favorites ul li.active {
+              background: none; }
+              .menu__item--hamburger .submenu-level2 > li.submenu-favorites ul li.active img {
+                margin-left: 10px; }
         .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__delete {
           margin-right: 10px;
           position: relative;
@@ -144,9 +148,13 @@
           .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__delete img {
             height: 20px; }
         .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__confirmation {
+          display: none;
           width: 80%; }
           .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__confirmation > a {
             color: white;
+            float: left;
+            line-height: 28px;
+            margin: 0;
             padding: 5px;
             text-decoration: none; }
           .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__confirmation__no {
@@ -154,7 +162,10 @@
           .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__confirmation__yes {
             background: #ff0000; }
           .menu__item--hamburger .submenu-level2 > li.submenu-favorites .submenu-favorites__confirmation h3 {
+            float: left;
             font-size: 15px;
+            line-height: 38px;
+            margin: 0 0 0 10px;
             text-transform: none; }
     .menu__item--calendar > span {
       background: url("../images/calendar-icon.png"); }
