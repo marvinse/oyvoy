@@ -11,7 +11,6 @@
 		height: 100%;
 		top: 0;
 		width: $menu-size;
-		
 	}
 	&__title{
 		display: none;
@@ -31,25 +30,33 @@
 	}
 	&__item{
 		float: left;
-		position: relative;
 		width: 25%;
 		@include respond-to($tablet-portrait){
 			float: none;
+			position: relative;
 			margin: 0 0 76px;
 			width: 100%;
 		}
 		.submenu{
 			background: white;
 			border-radius: 10px;
+			bottom: 200px;
 			color: black;
 			display: none;
-			left: calc(#{$menu-size} - 20px);
+			left: 0;
 			list-style: none;
+			margin: auto;
 			padding: 0 15px;
 			position: absolute;
+			right: 0;
 			text-transform: uppercase;
-			top: 0;	
-			width: 340px;
+			width: 95%;
+			@include respond-to($tablet-portrait){
+				bottom: auto;
+				left: calc(#{$menu-size} - 20px);
+				top: 0;
+				width: 340px;
+			}
 			li{
 				border-bottom: 1px solid $gray;
 				padding: 10px 0;
@@ -66,8 +73,11 @@
 				}
 			}
 			.submenu{
-				max-height: 500px;
+				max-height: 400px;
 				overflow-y: auto;
+				@include respond-to($tablet-portrait){
+					max-height: 500px;
+				}
 				>li{
 					background: url('../images/arrow-right.png') no-repeat;
 					background-position: 97% center;
@@ -87,6 +97,7 @@
 	    					margin: 10px 0;
 						}
 						input,textarea{
+							border: 1px solid $gray;
 							display: block;
 							margin-bottom: 10px;
 							padding: 2px;
@@ -225,7 +236,9 @@
 			.submenu{
 				max-height: 400px;
 				overflow-y: auto;
-				top: -100px;
+				@include respond-to($tablet-portrait){
+					top: -100px;
+				}
 				h4{
 					margin-bottom: 0;
 				}
@@ -272,7 +285,9 @@
 			}
 			.submenu{
 				height: 400px;
-				top: -200px;
+				@include respond-to($tablet-portrait){
+					top: -200px;
+				}
 			}
 		}
 		&--contact{
@@ -283,7 +298,9 @@
 				}
 			}
 			.submenu{
-				top: -300px;
+				@include respond-to($tablet-portrait){
+					top: -300px;
+				}
 				h4{
 					border-bottom: 1px solid $gray;
 					padding-bottom: 20px;
@@ -301,7 +318,8 @@
 			height: 35px;
 			text-indent: -9999;
 			&.is-active{
-				background-size: 100% 100%;
+				background-position: center;
+				background-repeat: no-repeat;
 			}
 		}
 		

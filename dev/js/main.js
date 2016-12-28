@@ -179,14 +179,16 @@ APP.banner = (function () {
     	bindEventsToUI();
     };
 
+    var settings = {
+                    speed: 4000,
+                    controls: false,
+                    pager: false,
+                    auto: true
+    };
+
     var bindEventsToUI = function(){
     	$(document).ready(function(){
-			$('.bxslider').bxSlider({
-				speed: 4000,
-				controls: false,
-				pager: false,
-				auto: true
-			});
+			$('.bxslider').bxSlider(settings);
 		});
     };
 
@@ -428,9 +430,7 @@ APP.sliderRestaurants = (function () {
 
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
-            }
+            $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
 
             var slider = $('.slider-restaurants__container').bxSlider({
                 slideWidth: 9999,

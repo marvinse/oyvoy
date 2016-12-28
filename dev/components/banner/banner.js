@@ -9,14 +9,16 @@ APP.banner = (function () {
     	bindEventsToUI();
     };
 
+    var settings = {
+                    speed: 4000,
+                    controls: false,
+                    pager: false,
+                    auto: true
+    };
+
     var bindEventsToUI = function(){
     	$(document).ready(function(){
-			$('.bxslider').bxSlider({
-				speed: 4000,
-				controls: false,
-				pager: false,
-				auto: true
-			});
+			$('.bxslider').bxSlider(settings);
 		});
     };
 

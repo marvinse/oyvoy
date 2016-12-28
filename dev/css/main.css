@@ -637,6 +637,7 @@ figure {
   margin: 0; }
 
 .container {
+  height: 100%;
   padding-bottom: 55px;
   position: relative; }
   @media only screen and (min-width: 768px) {
@@ -700,6 +701,7 @@ figure {
 
 .bx-wrapper .bx-viewport {
   border: 0;
+  left: 0px;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   -o-box-shadow: none;
@@ -755,25 +757,33 @@ figure {
         padding: 0 15px; } }
   .menu__item {
     float: left;
-    position: relative;
     width: 25%; }
     @media only screen and (min-width: 768px) {
       .menu__item {
         float: none;
+        position: relative;
         margin: 0 0 76px;
         width: 100%; } }
     .menu__item .submenu {
       background: white;
       border-radius: 10px;
+      bottom: 200px;
       color: black;
       display: none;
-      left: calc(89px - 20px);
+      left: 0;
       list-style: none;
+      margin: auto;
       padding: 0 15px;
       position: absolute;
+      right: 0;
       text-transform: uppercase;
-      top: 0;
-      width: 340px; }
+      width: 95%; }
+      @media only screen and (min-width: 768px) {
+        .menu__item .submenu {
+          bottom: auto;
+          left: calc(89px - 20px);
+          top: 0;
+          width: 340px; } }
       .menu__item .submenu li {
         border-bottom: 1px solid #585858;
         padding: 10px 0; }
@@ -784,8 +794,11 @@ figure {
       .menu__item--hamburger > span.is-active {
         background: url("../images/hamburguer-icon-active.png"); }
     .menu__item--hamburger .submenu {
-      max-height: 500px;
+      max-height: 400px;
       overflow-y: auto; }
+      @media only screen and (min-width: 768px) {
+        .menu__item--hamburger .submenu {
+          max-height: 500px; } }
       .menu__item--hamburger .submenu > li {
         background: url("../images/arrow-right.png") no-repeat;
         background-position: 97% center;
@@ -801,6 +814,7 @@ figure {
           padding-left: 15px;
           margin: 10px 0; }
         .menu__item--hamburger .submenu-level2 > li input, .menu__item--hamburger .submenu-level2 > li textarea {
+          border: 1px solid #585858;
           display: block;
           margin-bottom: 10px;
           padding: 2px;
@@ -901,8 +915,10 @@ figure {
         background: url("../images/calendar-icon-active.png"); }
     .menu__item--calendar .submenu {
       max-height: 400px;
-      overflow-y: auto;
-      top: -100px; }
+      overflow-y: auto; }
+      @media only screen and (min-width: 768px) {
+        .menu__item--calendar .submenu {
+          top: -100px; } }
       .menu__item--calendar .submenu h4 {
         margin-bottom: 0; }
       .menu__item--calendar .submenu__items {
@@ -934,19 +950,22 @@ figure {
       .menu__item--chat > span.is-active {
         background: url("../images/chat-icon-active.png"); }
     .menu__item--chat .submenu {
-      height: 400px;
-      top: -200px; }
+      height: 400px; }
+      @media only screen and (min-width: 768px) {
+        .menu__item--chat .submenu {
+          top: -200px; } }
     .menu__item--contact > span {
       background: url("../images/contact-icon.png"); }
       .menu__item--contact > span.is-active {
         background: url("../images/contact-icon-active.png"); }
-    .menu__item--contact .submenu {
-      top: -300px; }
-      .menu__item--contact .submenu h4 {
-        border-bottom: 1px solid #585858;
-        padding-bottom: 20px; }
-      .menu__item--contact .submenu iframe {
-        margin-bottom: 15px; }
+    @media only screen and (min-width: 768px) {
+      .menu__item--contact .submenu {
+        top: -300px; } }
+    .menu__item--contact .submenu h4 {
+      border-bottom: 1px solid #585858;
+      padding-bottom: 20px; }
+    .menu__item--contact .submenu iframe {
+      margin-bottom: 15px; }
     .menu__item > span {
       background-position: center;
       background-repeat: no-repeat;
@@ -955,7 +974,8 @@ figure {
       height: 35px;
       text-indent: -9999; }
       .menu__item > span.is-active {
-        background-size: 100% 100%; }
+        background-position: center;
+        background-repeat: no-repeat; }
 
 .slidebox {
   clear: both; }

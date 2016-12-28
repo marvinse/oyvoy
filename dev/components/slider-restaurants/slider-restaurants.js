@@ -50,9 +50,7 @@ APP.sliderRestaurants = (function () {
 
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
-            }
+            $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
 
             var slider = $('.slider-restaurants__container').bxSlider({
                 slideWidth: 9999,

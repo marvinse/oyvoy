@@ -9,10 +9,14 @@
 		bottom: 0;
 		position: absolute;
 		width: 100%;
+		@include respond-to($tablet-portrait){
+			
+		}
 	}
 }
 //overwrite plugin styles
 .bx-wrapper .bx-viewport{
 	border: 0;
+	left: 0px;
 	@include prefix(box-shadow, none);
 }
