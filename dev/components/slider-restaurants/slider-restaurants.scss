@@ -94,6 +94,53 @@
 		right: 0;
 		top: 0;
 		z-index: 3;
+		&__options{
+			display: none;
+			float: right;
+			margin: 15px;
+			position: relative;
+			@include respond-to($tablet-portrait){
+				display: block;
+			}
+			img,.slider-restaurants__add-to-favorites{
+				height: 22px;
+			}
+			.slider-restaurants__add-to-favorites{
+				background-image: url('../images/bookmark-off.png');
+				background-repeat: no-repeat;
+				background-size: 100%;
+				display: inline-block;
+				position: relative;
+				width: 17px;
+				&--on{
+					background-image: url('../images/bookmark-on.png');
+				}
+				img{
+					display: none;
+					height: initial;
+					left: -142px;
+					position: absolute;
+					top: 100%;
+				}
+			}
+			&--mobile{
+				display: block;
+				float: none;
+				margin: 2px 15px;
+				.slider-restaurants__popup__close{
+					float: right;
+				}
+				.slider-restaurants__add-to-favorites{
+					background-image: url('../images/bookmark-off-gray.png');
+					&--on{
+						background-image: url('../images/bookmark-on-gray.png');
+					}
+				}
+				@include respond-to($tablet-portrait){
+					display: none;
+				}
+			}
+		}
 		&__header{
 			figure{
 				float: left;
@@ -109,44 +156,26 @@
 				position: relative;
 				width: calc(100% - 150px);
 				>img{
+					height: 100%;
 					left: 0;
 					position: absolute;
-					width: 100%;
+					@include respond-to($tablet-portrait){
+						height: auto;
+						width: 100%;
+					}
 				}
 				h1{
 					background: rgba(0,0,0,.5);
 					color: white;
+					font-size: 18px;
 					height: 100%;
 					margin: 0;
 					padding: 25px;
 					position: absolute;
 					text-transform: uppercase;
 					width: 100%;
-				}
-				div{
-					float: right;
-					margin: 15px;
-					position: relative;
-					img,.slider-restaurants__add-to-favorites{
-						height: 22px;
-					}
-					.slider-restaurants__add-to-favorites{
-						background-image: url('../images/bookmark-off.png');
-						background-repeat: no-repeat;
-						background-size: 100%;
-						display: inline-block;
-						position: relative;
-						width: 17px;
-						&--on{
-							background-image: url('../images/bookmark-on.png');
-						}
-						img{
-							display: none;
-							height: initial;
-							left: -142px;
-							position: absolute;
-							top: 100%;
-						}
+					@include respond-to($tablet-portrait){
+						font-size: 32px;
 					}
 				}
 			}

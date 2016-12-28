@@ -1125,6 +1125,44 @@ figure {
     right: 0;
     top: 0;
     z-index: 3; }
+    .slider-restaurants__popup__options {
+      display: none;
+      float: right;
+      margin: 15px;
+      position: relative; }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants__popup__options {
+          display: block; } }
+      .slider-restaurants__popup__options img, .slider-restaurants__popup__options .slider-restaurants__add-to-favorites {
+        height: 22px; }
+      .slider-restaurants__popup__options .slider-restaurants__add-to-favorites {
+        background-image: url("../images/bookmark-off.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        display: inline-block;
+        position: relative;
+        width: 17px; }
+        .slider-restaurants__popup__options .slider-restaurants__add-to-favorites--on {
+          background-image: url("../images/bookmark-on.png"); }
+        .slider-restaurants__popup__options .slider-restaurants__add-to-favorites img {
+          display: none;
+          height: initial;
+          left: -142px;
+          position: absolute;
+          top: 100%; }
+      .slider-restaurants__popup__options--mobile {
+        display: block;
+        float: none;
+        margin: 2px 15px; }
+        .slider-restaurants__popup__options--mobile .slider-restaurants__popup__close {
+          float: right; }
+        .slider-restaurants__popup__options--mobile .slider-restaurants__add-to-favorites {
+          background-image: url("../images/bookmark-off-gray.png"); }
+          .slider-restaurants__popup__options--mobile .slider-restaurants__add-to-favorites--on {
+            background-image: url("../images/bookmark-on-gray.png"); }
+        @media only screen and (min-width: 768px) {
+          .slider-restaurants__popup__options--mobile {
+            display: none; } }
     .slider-restaurants__popup__header figure {
       float: left;
       width: 150px; }
@@ -1137,39 +1175,26 @@ figure {
       position: relative;
       width: calc(100% - 150px); }
       .slider-restaurants__popup__header__main-image > img {
+        height: 100%;
         left: 0;
-        position: absolute;
-        width: 100%; }
+        position: absolute; }
+        @media only screen and (min-width: 768px) {
+          .slider-restaurants__popup__header__main-image > img {
+            height: auto;
+            width: 100%; } }
       .slider-restaurants__popup__header__main-image h1 {
         background: rgba(0, 0, 0, 0.5);
         color: white;
+        font-size: 18px;
         height: 100%;
         margin: 0;
         padding: 25px;
         position: absolute;
         text-transform: uppercase;
         width: 100%; }
-      .slider-restaurants__popup__header__main-image div {
-        float: right;
-        margin: 15px;
-        position: relative; }
-        .slider-restaurants__popup__header__main-image div img, .slider-restaurants__popup__header__main-image div .slider-restaurants__add-to-favorites {
-          height: 22px; }
-        .slider-restaurants__popup__header__main-image div .slider-restaurants__add-to-favorites {
-          background-image: url("../images/bookmark-off.png");
-          background-repeat: no-repeat;
-          background-size: 100%;
-          display: inline-block;
-          position: relative;
-          width: 17px; }
-          .slider-restaurants__popup__header__main-image div .slider-restaurants__add-to-favorites--on {
-            background-image: url("../images/bookmark-on.png"); }
-          .slider-restaurants__popup__header__main-image div .slider-restaurants__add-to-favorites img {
-            display: none;
-            height: initial;
-            left: -142px;
-            position: absolute;
-            top: 100%; }
+        @media only screen and (min-width: 768px) {
+          .slider-restaurants__popup__header__main-image h1 {
+            font-size: 32px; } }
     .slider-restaurants__popup__container {
       clear: both;
       overflow: hidden;
