@@ -91,12 +91,15 @@
     display: none;
     height: 100%;
     left: 0;
-    margin: 0 38px;
+    margin: 5px 15px;
     overflow-y: scroll;
     position: absolute;
     right: 0;
     top: 0;
     z-index: 3; }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants__popup {
+        margin: 0 38px; } }
     .slider-restaurants__popup__options {
       display: none;
       float: right;
@@ -177,25 +180,35 @@
       float: right; }
     .slider-restaurants__popup__general-info__cta {
       overflow: hidden; }
-      .slider-restaurants__popup__general-info__cta h4 {
-        float: left; }
-      .slider-restaurants__popup__general-info__cta a {
-        float: right; }
-    .slider-restaurants__popup__left {
-      width: 40%; }
-      .slider-restaurants__popup__left .no-available {
-        background-image: url("../images/no.png"); }
-      .slider-restaurants__popup__left .available {
-        background-image: url("../images/yes.png"); }
-      .slider-restaurants__popup__left .no-available, .slider-restaurants__popup__left .available {
-        background-repeat: no-repeat;
-        background-position: center right;
-        max-width: 250px; }
-    .slider-restaurants__popup__right {
-      padding-left: 15px;
-      width: 60%; }
-    .slider-restaurants__popup__left, .slider-restaurants__popup__right {
-      float: left; }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants__popup__general-info__cta h4 {
+          float: left; } }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants__popup__general-info__cta a {
+          float: right; } }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants__popup__left {
+        width: 40%; } }
+    .slider-restaurants__popup__left .no-available {
+      background-image: url("../images/no.png"); }
+    .slider-restaurants__popup__left .available {
+      background-image: url("../images/yes.png"); }
+    .slider-restaurants__popup__left .no-available, .slider-restaurants__popup__left .available {
+      background-repeat: no-repeat;
+      background-position: center right;
+      max-width: 250px; }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants__popup__right {
+        padding-left: 15px;
+        width: 60%; } }
+    .slider-restaurants__popup__right .slidebox {
+      display: none; }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants__popup__right .slidebox {
+          display: block; } }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants__popup__left, .slider-restaurants__popup__right {
+        float: left; } }
     .slider-restaurants__popup__directions a {
       color: black;
       font-weight: bold;

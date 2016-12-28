@@ -323,7 +323,8 @@ APP.slidebox = (function () {
     };
 
     var bindEventsToUI = function(){
-    	$('.slidebox img').click(function(){
+
+        $('.slidebox').on('click','img',function(){
             removeSlideBoxContainer();
             createSlideBoxContainer( $(this).parent('.slidebox'), $(this).index() );
             $('.slidebox__sliders').fadeIn();
@@ -343,6 +344,27 @@ APP.slidebox = (function () {
             }
             $('.slidebox__sliders__image-container').css('left',currentLeft);
         });
+
+        $('body').on('initMobileSlider',function(){
+            window.slideboxmobile = $('.slidebox--mobile').bxSlider({
+                slideWidth: 9999,
+                minSlides: 4,
+                maxSlides: 4,
+                moveSlides: 2,
+                pager: false,
+                nextSelector: '.slidebox__controllers__right',
+                prevSelector: '.slidebox__controllers__left',
+                nextText: '',
+                prevText: '',
+                auto: true
+            });
+        });
+
+        $('body').on('removeMobileSlider',function(){
+            $('.slidebox__controllers .slidebox__controllers__left a, .slidebox__controllers .slidebox__controllers__right a').remove();
+            window.slideboxmobile.destroySlider();
+        })
+        
     };
 
     var removeSlideBoxContainer = function(){
@@ -393,12 +415,14 @@ APP.sliderRestaurants = (function () {
     	$('.slider-restaurants__restaurant > img').click(function(){
     		$('.popup').show();
     		$('.slider-restaurants__popup').fadeIn();
+            $('body').trigger('initMobileSlider');
     	});
 
         $('.slider-restaurants__popup__close').click(function(e){
             e.preventDefault();
             $('.popup').hide();
             $('.slider-restaurants__popup').fadeOut();
+            $('body').trigger('removeMobileSlider');
         });
 
         $('.slider-restaurants__popup .create-review, .slider-restaurants__popup__new-review__close').click(function(){

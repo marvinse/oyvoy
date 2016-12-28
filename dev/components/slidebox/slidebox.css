@@ -1,10 +1,16 @@
 .slidebox {
   clear: both; }
+  .slidebox__container {
+    padding: 0 28px;
+    position: relative; }
   .slidebox img {
     cursor: pointer;
-    float: left;
-    padding: 10px;
-    width: 45%; }
+    width: 50%; }
+    @media only screen and (min-width: 768px) {
+      .slidebox img {
+        float: left;
+        padding: 10px;
+        width: 45%; } }
   .slidebox__sliders {
     background: rgba(0, 0, 0, 0.5);
     display: none;
@@ -46,3 +52,30 @@
       left: 0; }
     .slidebox__sliders__control-right {
       right: 0; }
+  .slidebox__controllers {
+    left: 0;
+    top: 0; }
+    .slidebox__controllers__left, .slidebox__controllers__right {
+      bottom: 0;
+      height: 28px;
+      margin: auto;
+      position: absolute;
+      top: 0; }
+      .slidebox__controllers__left a, .slidebox__controllers__right a {
+        display: inline-block;
+        height: 28px;
+        width: 18px; }
+    .slidebox__controllers__left {
+      left: 0; }
+      .slidebox__controllers__left a {
+        background: url("../images/controller-left.png") no-repeat; }
+    .slidebox__controllers__right {
+      right: 0; }
+      .slidebox__controllers__right a {
+        background: url("../images/controller-right.png") no-repeat; }
+    @media only screen and (min-width: 768px) {
+      .slidebox__controllers {
+        display: none; } }
+  @media only screen and (min-width: 768px) {
+    .slidebox--mobile {
+      display: none; } }

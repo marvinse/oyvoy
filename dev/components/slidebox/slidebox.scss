@@ -1,11 +1,18 @@
 @import "../global/vars";
 .slidebox{
 	clear: both;
+	&__container{
+		padding: 0 28px;
+		position: relative;
+	}
 	img{
 		cursor: pointer;
-		float: left;
-		padding: 10px;
-		width: 45%;
+		width: 50%;
+		@include respond-to($tablet-portrait){
+			float: left;
+			padding: 10px;
+			width: 45%;	
+		}
 	}
 	&__sliders{
 		background: rgba(0,0,0,.5);
@@ -49,6 +56,42 @@
 		}
 		&__control-right{
 			right: 0;
+		}
+	}
+	&__controllers{
+		left: 0;
+		top: 0;
+		&__left, &__right{
+			bottom: 0;
+			height: 28px;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			a{
+				display: inline-block;
+				height: 28px;
+				width: 18px;
+			}
+		}
+		&__left{
+			left: 0;
+			a{
+				background: url('../images/controller-left.png') no-repeat;
+			}
+		}
+		&__right{
+			right: 0;
+			a{
+				background: url('../images/controller-right.png') no-repeat;
+			}
+		}
+		@include respond-to($tablet-portrait){
+			display: none;
+		}
+	}
+	&--mobile{
+		@include respond-to($tablet-portrait){
+			display: none;
 		}
 	}
 }

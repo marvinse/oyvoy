@@ -88,12 +88,15 @@
 		display: none;
 		height: 100%;
 		left: 0;
-		margin: 0 38px;
+		margin: 5px 15px;
 		overflow-y: scroll;
 		position: absolute;
 		right: 0;
 		top: 0;
 		z-index: 3;
+		@include respond-to($tablet-portrait){
+			margin: 0 38px;
+		}
 		&__options{
 			display: none;
 			float: right;
@@ -195,15 +198,21 @@
 			&__cta{
 				overflow: hidden;
 				h4{
-					float: left;
+					@include respond-to($tablet-portrait){
+						float: left;
+					}
 				}
 				a{
-					float: right;
+					@include respond-to($tablet-portrait){
+						float: right;
+					}
 				}
 			}
 		}
 		&__left{
-			width: 40%;
+			@include respond-to($tablet-portrait){
+				width: 40%;
+			}
 			.no-available{
 				background-image: url('../images/no.png');
 			}
@@ -217,11 +226,21 @@
 			}
 		}
 		&__right{
-    		padding-left: 15px;
-			width: 60%;
+			@include respond-to($tablet-portrait){
+				padding-left: 15px;
+				width: 60%;
+			}
+			.slidebox{
+				display: none;
+				@include respond-to($tablet-portrait){
+					display: block;
+				}
+			}
 		}
 		&__left, &__right{
-			float: left;
+			@include respond-to($tablet-portrait){
+				float: left;
+			}
 		}
 		&__directions{
 			a{
