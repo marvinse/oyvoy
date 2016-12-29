@@ -266,15 +266,34 @@
 		&__reviews{
 			clear: both;
 			float: left;
+			padding-right: 10px;
 			width: 50%;
 			@include respond-to($tablet-portrait){
 				float: none;
+				padding-right: 0;
 				width: 100%;
 			}
 			h4{
 				margin: 0;
 				@include respond-to($tablet-portrait){
 					float: left;
+				}
+			}
+			&__short-description{
+				margin-bottom: 20px;
+				text-align: right;
+				p{
+					text-align: left;
+					margin: 5px 0;
+				}
+				a{
+					color: black;
+					font-style: italic;
+					font-weight: bold;
+					text-decoration: none;
+				}
+				@include respond-to($tablet-portrait){
+					display: none;
 				}
 			}
 			.create-review{
@@ -442,6 +461,29 @@
 			h4{
 				margin: 5px 0 0;
 			}
+			&__short-direction{
+				margin-bottom: 20px;
+				text-align: right;
+				@include respond-to($tablet-portrait){
+					display: none;
+				}
+				p{
+					text-align: left;
+					margin: 5px 0;
+				}
+				a{
+					color: black;
+					font-style: italic;
+					font-weight: bold;
+					text-decoration: none;
+				}
+			}
+			&__long-direction{
+				display: none;
+				@include respond-to($tablet-portrait){
+					display: block;
+				}
+			}
 		}
 		&__facilities{
 			clear: both;
@@ -452,7 +494,6 @@
 				}
 			}
 			&--mobile{
-				width: 95%;
 				h4{
 					margin: 10px 0 0;
 				}
