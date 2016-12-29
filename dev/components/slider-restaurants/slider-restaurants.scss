@@ -211,6 +211,7 @@
 		}
 		&__left{
 			@include respond-to($tablet-portrait){
+				float: left;
 				width: 40%;
 			}
 			.no-available{
@@ -226,6 +227,8 @@
 			}
 		}
 		&__right{
+			float: left;
+			width: 50%;
 			@include respond-to($tablet-portrait){
 				padding-left: 15px;
 				width: 60%;
@@ -237,39 +240,63 @@
 				}
 			}
 		}
-		&__left, &__right{
-			@include respond-to($tablet-portrait){
-				float: left;
-			}
-		}
 		&__directions{
 			a{
 				color: black;
+				display: block;
 				font-weight: bold;
-				float: left;
 				text-decoration: none;
 				text-transform: uppercase;
 				padding-right: 20px;
+				@include respond-to($tablet-portrait){
+					float: left;
+				}
 				&:last-of-type{
-					margin-left: 60px;
+					margin-top: 10px;
+					@include respond-to($tablet-portrait){
+						margin-top: 0;
+						margin-left: 60px;
+					}
+				}
+				&.right-arrow:after{
+					right: 0;
 				}
 			}
 		}
 		&__reviews{
-			h4{
-				float: left;
-				margin: 0;
+			clear: both;
+			float: left;
+			width: 50%;
+			@include respond-to($tablet-portrait){
+				float: none;
+				width: 100%;
 			}
-			a{
+			h4{
+				margin: 0;
+				@include respond-to($tablet-portrait){
+					float: left;
+				}
+			}
+			.create-review{
 				color: black;
 				font-style: italic;
 				font-weight: bold;
 				float: right;
 				text-decoration: none;
+				&--desktop{
+					display: none;
+					@include respond-to($tablet-portrait){
+						display: block;
+					}
+				}
 			}
 		}
 		&__review{
 			clear: both;
+			display: none;
+			@include respond-to($tablet-portrait){
+				display: block;
+			}
 			>div{
 				overflow: hidden;
 				padding-top: 15px;
@@ -377,11 +404,61 @@
 			}
 		}
 		&__score{
+			clear: both;
+			float: left;
+			width: 50%;
+			@include respond-to($tablet-portrait){
+				float: none;
+				width: 100%;
+			}
+			h4{
+				margin: 5px 0 10px;
+				@include respond-to($tablet-portrait){
+					margin: 5px 0 15px;
+				}
+			}
 			> *{
 				display: inline-block;
 			}
 			img{
-				max-width: 150px;
+				max-width: 100px;
+			}
+		}
+		&__schedule{
+			float: left;
+			width: 50%;
+			@include respond-to($tablet-portrait){
+				float: none;
+				width: 100%;
+			}
+			h4{
+				margin: 5px 0 10px;
+			}
+			p{
+				margin: 0;
+			}
+		}
+		&__how-to-get{
+			h4{
+				margin: 5px 0 0;
+			}
+		}
+		&__facilities{
+			clear: both;
+			&--desktop{
+				display: none;
+				@include respond-to($tablet-portrait){
+					display: block;
+				}
+			}
+			&--mobile{
+				width: 95%;
+				h4{
+					margin: 10px 0 0;
+				}
+				@include respond-to($tablet-portrait){
+					display: none;
+				}
 			}
 		}
 	}

@@ -31,22 +31,27 @@
 			</div>
 			<p>Restaurante Japones, con amplio menú que incluye una gran variedad de platos como sushi, tempura, sopas y teriyaki.</p>
 			<p>Contamos con el pescado más fresco del país</p>
-			{{>slidebox slideboxmodifier='slidebox--mobile'}}
 			<a class="slider-restaurants__popup__general-info__site" href="#">www.saporro.com</a>
+			<br /><br />
+			{{>slidebox slideboxmodifier='slidebox--mobile'}}
 		</div>
 		<div class="slider-restaurants__popup__left">
 			<div class="slider-restaurants__popup__score">
 				<h4>Calificación</h4>
 				<img src="images/2half-stars.png" alt="">
 			</div>
-			<h4>Horario</h4>
-			<p>L-D 12md - 10pm</p>
-			<p>L-D 12md - 10pm</p>
-			<h4 class="no-available">Parqueo</h4>
-			<h4 class="available">Zona para niños</h4>
+			<div class="slider-restaurants__popup__schedule">
+				<h4>Horario</h4>
+				<p>L-D 12md - 10pm</p>
+				<p>L-D 12md - 10pm</p>
+			</div>
+			<div class="slider-restaurants__popup__facilities slider-restaurants__popup__facilities--desktop">
+				<h4 class="no-available">Parqueo</h4>
+				<h4 class="available">Zona para niños</h4>
+			</div>
 			<div class="slider-restaurants__popup__reviews">
 				<h4>Reseñas (20)</h4>
-				<a class="create-review" href="#">Escribir una</a>
+				<a class="create-review create-review--desktop" href="#">Escribir una</a>
 				<div class="slider-restaurants__popup__review">
 					<div>
 						<h3>Muy bonito el lugar</h3>
@@ -70,12 +75,18 @@
 					</div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ex purus, auctor ac quam id,pulvinar lacinia nisi. Quisque porttitor, auguein dapibus elementum, tortor mi tincidunt ligula, sed rutrum est dui eget lectus. Morbi eu</p>
 					<h3 class="slider-restaurants__popup__review__author">Juan Perez</h3>
+				</div>
+				<div class="slider-restaurants__popup__facilities slider-restaurants__popup__facilities--mobile">
+					<h4 class="no-available">Parqueo</h4>
+					<h4 class="available">Zona para niños</h4>
 				</div>
 			</div>
 		</div>
 		<div class="slider-restaurants__popup__right">
-			<h4>Como llegar?</h4>
-			<p>De la esquina suroeste de la rotonda de la bandera, 100m este y 100m oeste, primera entrada a mano derecha</p>
+			<div class="slider-restaurants__popup__how-to-get">
+				<h4>Como llegar?</h4>
+				<p>De la esquina suroeste de la rotonda de la bandera, 100m este y 100m oeste, primera entrada a mano derecha</p>
+			</div>
 			<div class="slider-restaurants__popup__directions">
 				<a href="#" class="right-arrow">Google Maps</a>
 				<a href="#" class="right-arrow">Waze</a>
