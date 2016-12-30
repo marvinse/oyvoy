@@ -111,7 +111,7 @@
 								text-transform: uppercase;
 							}
 						}
-						&.submenu-today{
+						&.submenu-today, &.submenu-offers{
 							h3{
 								border-bottom: 1px solid $gray;
 								padding-bottom: 10px;
@@ -150,7 +150,7 @@
 									}
 								}
 							}
-							.submenu-today__parent-menu{
+							.submenu-today__parent-menu, .submenu-offers__parent-menu{
 								ul{
 									display: none;
 								}
@@ -195,6 +195,9 @@
 								text-align: center;
 								text-decoration: none;
 								text-transform: uppercase;
+							}
+							.submenu-login__new-account{
+								display: none;
 							}
 						}
 						&.submenu-about{

@@ -40,7 +40,7 @@ APP.menu = (function () {
             $('.'+submenuToShow).show();
         });
 
-        $('.menu__item--hamburger .submenu .submenu-level2 > li h3.back').click(function(){
+        $('.menu__item--hamburger .submenu .submenu-level2 > li > h3.back').click(function(){
             $(this).parent('li').hide();
             $('.menu__item--hamburger .submenu > li').show();
         }); 
@@ -71,6 +71,12 @@ APP.menu = (function () {
             if($(this).parent().find('>ul').length > 0){
                 $(this).toggleClass('is-active');
             }
+        });
+
+        $('.menu__item--hamburger .submenu-login__create-account span, .menu__item--hamburger .submenu-login__new-account h3.back').click(function(){
+            $('.submenu-login > h3').toggle();
+            $('.submenu-login__main-container').toggle();
+            $('.submenu-login__new-account').toggle();
         });
 
     };

@@ -96,36 +96,36 @@
             font-size: 12px;
             padding: 5px;
             text-transform: uppercase; }
-        .menu__item--hamburger .submenu-level2 > li.submenu-today h3 {
+        .menu__item--hamburger .submenu-level2 > li.submenu-today h3, .menu__item--hamburger .submenu-level2 > li.submenu-offers h3 {
           border-bottom: 1px solid #585858;
           padding-bottom: 10px; }
-          .menu__item--hamburger .submenu-level2 > li.submenu-today h3.back {
+          .menu__item--hamburger .submenu-level2 > li.submenu-today h3.back, .menu__item--hamburger .submenu-level2 > li.submenu-offers h3.back {
             background-position: left 3px; }
-        .menu__item--hamburger .submenu-level2 > li.submenu-today form {
+        .menu__item--hamburger .submenu-level2 > li.submenu-today form, .menu__item--hamburger .submenu-level2 > li.submenu-offers form {
           position: relative; }
-          .menu__item--hamburger .submenu-level2 > li.submenu-today form input {
+          .menu__item--hamburger .submenu-level2 > li.submenu-today form input, .menu__item--hamburger .submenu-level2 > li.submenu-offers form input {
             padding-right: 25px; }
-          .menu__item--hamburger .submenu-level2 > li.submenu-today form a {
+          .menu__item--hamburger .submenu-level2 > li.submenu-today form a, .menu__item--hamburger .submenu-level2 > li.submenu-offers form a {
             position: absolute;
             right: 10px;
             top: 4px; }
-            .menu__item--hamburger .submenu-level2 > li.submenu-today form a img {
+            .menu__item--hamburger .submenu-level2 > li.submenu-today form a img, .menu__item--hamburger .submenu-level2 > li.submenu-offers form a img {
               height: 15px; }
-        .menu__item--hamburger .submenu-level2 > li.submenu-today ul {
+        .menu__item--hamburger .submenu-level2 > li.submenu-today ul, .menu__item--hamburger .submenu-level2 > li.submenu-offers ul {
           list-style: none;
           padding: 0; }
-          .menu__item--hamburger .submenu-level2 > li.submenu-today ul li {
+          .menu__item--hamburger .submenu-level2 > li.submenu-today ul li, .menu__item--hamburger .submenu-level2 > li.submenu-offers ul li {
             text-transform: none; }
-            .menu__item--hamburger .submenu-level2 > li.submenu-today ul li span {
+            .menu__item--hamburger .submenu-level2 > li.submenu-today ul li span, .menu__item--hamburger .submenu-level2 > li.submenu-offers ul li span {
               background: url(../images/arrow-right.png) left center no-repeat;
               cursor: pointer;
               display: block;
               padding-left: 20px; }
-              .menu__item--hamburger .submenu-level2 > li.submenu-today ul li span.is-active {
+              .menu__item--hamburger .submenu-level2 > li.submenu-today ul li span.is-active, .menu__item--hamburger .submenu-level2 > li.submenu-offers ul li span.is-active {
                 background: url(../images/arrow-down.png) left center no-repeat; }
-        .menu__item--hamburger .submenu-level2 > li.submenu-today .submenu-today__parent-menu ul {
+        .menu__item--hamburger .submenu-level2 > li.submenu-today .submenu-today__parent-menu ul, .menu__item--hamburger .submenu-level2 > li.submenu-today .submenu-offers__parent-menu ul, .menu__item--hamburger .submenu-level2 > li.submenu-offers .submenu-today__parent-menu ul, .menu__item--hamburger .submenu-level2 > li.submenu-offers .submenu-offers__parent-menu ul {
           display: none; }
-        .menu__item--hamburger .submenu-level2 > li.submenu-today .submenu-today__parent-menu > li > ul li {
+        .menu__item--hamburger .submenu-level2 > li.submenu-today .submenu-today__parent-menu > li > ul li, .menu__item--hamburger .submenu-level2 > li.submenu-today .submenu-offers__parent-menu > li > ul li, .menu__item--hamburger .submenu-level2 > li.submenu-offers .submenu-today__parent-menu > li > ul li, .menu__item--hamburger .submenu-level2 > li.submenu-offers .submenu-offers__parent-menu > li > ul li {
           padding-left: 25px; }
         .menu__item--hamburger .submenu-level2 > li.submenu-login label {
           display: block;
@@ -158,6 +158,8 @@
           text-align: center;
           text-decoration: none;
           text-transform: uppercase; }
+        .menu__item--hamburger .submenu-level2 > li.submenu-login .submenu-login__new-account {
+          display: none; }
         .menu__item--hamburger .submenu-level2 > li.submenu-about h3 {
           border-bottom: 1px solid #585858;
           padding-bottom: 10px; }
