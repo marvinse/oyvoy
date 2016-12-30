@@ -713,7 +713,8 @@ figure {
   left: 0;
   position: absolute;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 9999; }
   @media only screen and (min-width: 768px) {
     .full-modal {
       z-index: 9999; } }
@@ -1512,10 +1513,10 @@ figure {
       height: 28px;
       width: 18px; }
   .slider-restaurants__controllers__left {
-    left: 38px; }
+    left: 10px; }
     .slider-restaurants__controllers__left a {
       background: url("../images/controller-left.png") no-repeat; }
   .slider-restaurants__controllers__right {
-    right: 38px; }
+    right: 10px; }
     .slider-restaurants__controllers__right a {
       background: url("../images/controller-right.png") no-repeat; }
