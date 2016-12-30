@@ -1322,23 +1322,13 @@ figure {
         @media only screen and (min-width: 768px) {
           .slider-restaurants__popup__reviews__short-description {
             display: none; } }
-      .slider-restaurants__popup__reviews .create-review {
-        color: black;
-        font-style: italic;
-        font-weight: bold;
-        float: right;
-        text-decoration: none; }
-        .slider-restaurants__popup__reviews .create-review--desktop {
-          display: none; }
-          @media only screen and (min-width: 768px) {
-            .slider-restaurants__popup__reviews .create-review--desktop {
-              display: block; } }
     .slider-restaurants__popup__review {
-      clear: both;
-      display: none; }
-      @media only screen and (min-width: 768px) {
-        .slider-restaurants__popup__review {
-          display: block; } }
+      clear: both; }
+      .slider-restaurants__popup__review--desktop {
+        display: none; }
+        @media only screen and (min-width: 768px) {
+          .slider-restaurants__popup__review--desktop {
+            display: block; } }
       .slider-restaurants__popup__review > div {
         overflow: hidden;
         padding-top: 15px; }
@@ -1376,11 +1366,14 @@ figure {
         border-radius: 15px;
         margin: auto;
         margin-top: 15px;
+        max-height: 400px;
         overflow: hidden;
+        overflow-y: auto;
         padding: 20px;
         width: 95%; }
         @media only screen and (min-width: 768px) {
           .slider-restaurants__popup__popup-red__container {
+            max-height: 450px;
             width: 50%; } }
         .slider-restaurants__popup__popup-red__container h2 {
           display: inline-block;
@@ -1493,6 +1486,21 @@ figure {
       @media only screen and (min-width: 768px) {
         .slider-restaurants__popup__facilities--mobile {
           display: none; } }
+  .slider-restaurants .create-review {
+    color: black;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 60px;
+    text-decoration: none; }
+    .slider-restaurants .create-review--desktop {
+      display: none;
+      float: right;
+      font-size: 16px;
+      margin-left: 0; }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants .create-review--desktop {
+          display: block; } }
   .slider-restaurants__controllers__left, .slider-restaurants__controllers__right {
     bottom: 0;
     height: 28px;
