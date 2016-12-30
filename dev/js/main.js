@@ -425,8 +425,17 @@ APP.sliderRestaurants = (function () {
             $('body').trigger('removeMobileSlider');
         });
 
-        $('.slider-restaurants__popup .create-review, .slider-restaurants__popup__new-review__close').click(function(){
+        $('.slider-restaurants__popup .create-review').click(function(){
             $('.slider-restaurants__popup__new-review').toggle();
+        });
+
+        $('.slider-restaurants__popup__popup-red__close').click(function(){
+            $(this).closest('.slider-restaurants__popup__popup-red').toggle();
+        });
+
+        $('.slider-restaurants__popup__how-to-get .full-direction').click(function(e){
+            e.preventDefault();
+            $('.slider-restaurants__popup__full-direction').toggle();
         });
 
         $('.slider-restaurants__popup__new-review__qualification img').on('mouseover click',function(){
