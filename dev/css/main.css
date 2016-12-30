@@ -1183,9 +1183,13 @@ figure {
         .slider-restaurants__popup__options .slider-restaurants__add-to-favorites img {
           display: none;
           height: initial;
-          left: -142px;
+          left: 0;
           position: absolute;
-          top: 100%; }
+          top: 100%;
+          z-index: 2; }
+          @media only screen and (min-width: 768px) {
+            .slider-restaurants__popup__options .slider-restaurants__add-to-favorites img {
+              left: -142px; } }
       .slider-restaurants__popup__options--mobile {
         display: block;
         float: none;

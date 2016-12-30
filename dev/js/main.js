@@ -439,7 +439,11 @@ APP.sliderRestaurants = (function () {
             var self = $(this);
             $(this).toggleClass('slider-restaurants__add-to-favorites--on');
             if( $(this).hasClass('slider-restaurants__add-to-favorites--on') ){
-                $(this).find('img').fadeIn('1000',function(){
+                $(this).find('img.added').fadeIn('1000',function(){
+                    $(this).delay(2000).fadeOut('1000'); 
+                });
+            }else{
+                $(this).find('img.removed').fadeIn('1000',function(){
                     $(this).delay(2000).fadeOut('1000'); 
                 });
             }

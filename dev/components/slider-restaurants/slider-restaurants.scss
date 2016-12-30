@@ -121,9 +121,13 @@
 				img{
 					display: none;
 					height: initial;
-					left: -142px;
+					left: 0;
 					position: absolute;
 					top: 100%;
+					z-index: 2;
+					@include respond-to($tablet-portrait){
+						left: -142px;
+					}
 				}
 			}
 			&--mobile{
