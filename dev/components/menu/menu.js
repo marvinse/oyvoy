@@ -10,7 +10,7 @@ APP.menu = (function () {
     };
 
     var bindEventsToUI = function(){
-    	$('.menu__item span').click(function(){
+    	$('.menu__item > span').click(function(){
     		$(this).toggleClass('is-active');
             var parent = $(this).parent('li');
     		parent.find('.submenu').toggle();
@@ -64,6 +64,13 @@ APP.menu = (function () {
         $('.menu__item--hamburger .submenu-favorites__confirmation__yes').click(function(e){
             e.preventDefault();
             $(this).closest('li').remove();
+        });
+
+        $('.menu__item--hamburger .submenu-today .submenu-today__parent-menu span').click(function(){
+            $(this).parent().find('>ul').toggle();
+            if($(this).parent().find('>ul').length > 0){
+                $(this).toggleClass('is-active');
+            }
         });
 
     };
