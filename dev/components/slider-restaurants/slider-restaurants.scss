@@ -1,7 +1,18 @@
 @import "../global/vars";
 .slider-restaurants{
+	display: none;
 	padding: 0 38px;
 	position: relative;
+	@include respond-to($tablet-portrait){
+		display: block;
+	}
+	&--mobile{
+		display: block;
+		padding-top: 50%;
+		@include respond-to($tablet-portrait){
+			display: none;
+		}
+	}
 	&__restaurant{
 		cursor: pointer;
 		float: left;
@@ -13,7 +24,9 @@
 		}
 		>img{
 			display: inline-block;
-			min-height: 430px;
+			@include respond-to($tablet-portrait){
+				min-height: 430px;
+			}
 		}
 		&__logo{
 			height: 100px;

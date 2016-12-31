@@ -1,9 +1,17 @@
-<div class="slider-restaurants">
+<div class="slider-restaurants {{modifierDesktop}} {{modifierMobile}}">
 	<div class="slider-restaurants__container">
-	{{>slider-restaurants__restaurant class="small" title="Cuidad saporro" small-image="true"}}
-	{{>slider-restaurants__restaurant class="full" title="30 piezas de sushi a 50% de descuento" full-image="true"}}
-	{{>slider-restaurants__restaurant class="small" title="Cuidad saporro" small-image="true"}}
-	{{>slider-restaurants__restaurant class="full" title="30 piezas de sushi a 50% de descuento" full-image="true"}}
+	{{#if modifierDesktop}}
+		{{>slider-restaurants__restaurant src="images/examples/full-lugar-card-placeholder.png"}}
+		{{>slider-restaurants__restaurant src="images/examples/full-promo-card-placeholder.png"}}
+		{{>slider-restaurants__restaurant src="images/examples/full-lugar-card-placeholder.png"}}
+		{{>slider-restaurants__restaurant src="images/examples/full-promo-card-placeholder.png"}}
+	{{/if}}
+	{{#if modifierMobile}}
+		{{>slider-restaurants__restaurant src="images/examples/card-lugar-placeholder.png"}}
+		{{>slider-restaurants__restaurant src="images/examples/card-promo-placeholder.png"}}
+		{{>slider-restaurants__restaurant src="images/examples/card-lugar-placeholder.png"}}
+		{{>slider-restaurants__restaurant src="images/examples/card-promo-placeholder.png"}}
+	{{/if}}
 	</div>
 	<div class="slider-restaurants__controllers">
 		<p class="slider-restaurants__controllers__left"></p>

@@ -1,6 +1,16 @@
 .slider-restaurants {
+  display: none;
   padding: 0 38px;
   position: relative; }
+  @media only screen and (min-width: 768px) {
+    .slider-restaurants {
+      display: block; } }
+  .slider-restaurants--mobile {
+    display: block;
+    padding-top: 50%; }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants--mobile {
+        display: none; } }
   .slider-restaurants__restaurant {
     cursor: pointer;
     float: left;
@@ -11,8 +21,10 @@
       .slider-restaurants__restaurant {
         width: calc(25% - 8px); } }
     .slider-restaurants__restaurant > img {
-      display: inline-block;
-      min-height: 430px; }
+      display: inline-block; }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants__restaurant > img {
+          min-height: 430px; } }
     .slider-restaurants__restaurant__logo {
       height: 100px;
       overflow: hidden;
