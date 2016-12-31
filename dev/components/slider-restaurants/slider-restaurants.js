@@ -13,13 +13,20 @@ APP.sliderRestaurants = (function () {
     	$('.slider-restaurants__restaurant > img').click(function(){
     		$('.popup').show();
     		$('.slider-restaurants__popup').fadeIn();
-            $('body').trigger('initMobileSlider');
     	});
+
+        $('.slider-restaurants--mobile .slider-restaurants__restaurant > img').click(function(){
+            $('body').trigger('initMobileSlider');
+        });
 
         $('.slider-restaurants__popup__close').click(function(e){
             e.preventDefault();
             $('.popup').hide();
             $('.slider-restaurants__popup').fadeOut();
+            
+        });
+
+        $('.slider-restaurants--mobile .slider-restaurants__popup__close').click(function(){
             $('body').trigger('removeMobileSlider');
         });
 

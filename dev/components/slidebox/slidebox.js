@@ -34,15 +34,22 @@ APP.slidebox = (function () {
             $('.slidebox__sliders__image-container').css('left',currentLeft);
         });
 
+        $('body').on('click','.slidebox__controllers__left a',function(){
+            window.slideboxmobile.goToPrevSlide();
+        });
+
+        $('body').on('click','.slidebox__controllers__right a',function(){
+            window.slideboxmobile.goToNextSlide();
+        });
+
         $('body').on('initMobileSlider',function(){
+            $('.slider-restaurants--desktop').remove();
             window.slideboxmobile = $('.slidebox--mobile').bxSlider({
                 slideWidth: 9999,
                 minSlides: 4,
                 maxSlides: 4,
                 moveSlides: 2,
                 pager: false,
-                nextSelector: '.slidebox__controllers__right',
-                prevSelector: '.slidebox__controllers__left',
                 nextText: '',
                 prevText: '',
                 auto: true
@@ -52,7 +59,7 @@ APP.slidebox = (function () {
         $('body').on('removeMobileSlider',function(){
             $('.slidebox__controllers .slidebox__controllers__left a, .slidebox__controllers .slidebox__controllers__right a').remove();
             window.slideboxmobile.destroySlider();
-        })
+        });
         
     };
 
