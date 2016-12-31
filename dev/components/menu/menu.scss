@@ -293,37 +293,14 @@
 				h4{
 					margin-bottom: 0;
 				}
-				&__items{
-					text-align: right;
+				>li{
+					background: url('../images/arrow-right.png') no-repeat;
+					background-position: 97% center;
 					a{
 						color: black;
-						margin-right: 10px;
+						display: block;
 						text-decoration: none;
-						&.is-active{
-							font-weight: bold;
-						}
 					}
-				}
-				>li{
-					border-bottom: 0;
-					ul{
-						list-style: none;
-						padding: 0;
-						li{
-							background: url('../images/arrow-right.png') no-repeat;
-							background-position: 97% center;
-							border-top: 1px solid $gray;
-							border-bottom: 0;
-							span{
-								position: relative;
-								text-transform: none;
-								top: -15px;
-							}
-						}	
-					}
-				}
-				>li:nth-of-type(n+2){
-					display: none;
 				}
 			}
 		}

@@ -955,30 +955,13 @@ figure {
           top: -100px; } }
       .menu__item--calendar .submenu h4 {
         margin-bottom: 0; }
-      .menu__item--calendar .submenu__items {
-        text-align: right; }
-        .menu__item--calendar .submenu__items a {
-          color: black;
-          margin-right: 10px;
-          text-decoration: none; }
-          .menu__item--calendar .submenu__items a.is-active {
-            font-weight: bold; }
       .menu__item--calendar .submenu > li {
-        border-bottom: 0; }
-        .menu__item--calendar .submenu > li ul {
-          list-style: none;
-          padding: 0; }
-          .menu__item--calendar .submenu > li ul li {
-            background: url("../images/arrow-right.png") no-repeat;
-            background-position: 97% center;
-            border-top: 1px solid #585858;
-            border-bottom: 0; }
-            .menu__item--calendar .submenu > li ul li span {
-              position: relative;
-              text-transform: none;
-              top: -15px; }
-      .menu__item--calendar .submenu > li:nth-of-type(n+2) {
-        display: none; }
+        background: url("../images/arrow-right.png") no-repeat;
+        background-position: 97% center; }
+        .menu__item--calendar .submenu > li a {
+          color: black;
+          display: block;
+          text-decoration: none; }
     .menu__item--chat > span {
       background: url("../images/chat-icon.png"); }
       .menu__item--chat > span.is-active {
@@ -1094,8 +1077,18 @@ figure {
       display: none; } }
 
 .slider-restaurants {
+  display: none;
   padding: 0 38px;
   position: relative; }
+  @media only screen and (min-width: 768px) {
+    .slider-restaurants {
+      display: block; } }
+  .slider-restaurants--mobile {
+    display: block;
+    padding-top: 50%; }
+    @media only screen and (min-width: 768px) {
+      .slider-restaurants--mobile {
+        display: none; } }
   .slider-restaurants__restaurant {
     cursor: pointer;
     float: left;
@@ -1106,8 +1099,10 @@ figure {
       .slider-restaurants__restaurant {
         width: calc(25% - 8px); } }
     .slider-restaurants__restaurant > img {
-      display: inline-block;
-      min-height: 430px; }
+      display: inline-block; }
+      @media only screen and (min-width: 768px) {
+        .slider-restaurants__restaurant > img {
+          min-height: 430px; } }
     .slider-restaurants__restaurant__logo {
       height: 100px;
       overflow: hidden;

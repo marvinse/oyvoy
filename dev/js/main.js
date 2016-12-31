@@ -258,15 +258,6 @@ APP.menu = (function () {
                 }
             }
     	});
-        $('.menu__item--calendar .submenu__items a').click(function(e){
-            e.preventDefault();
-            var index = $(this).index();
-            $(this).addClass('is-active');
-            $(this).siblings().removeClass('is-active');
-            var newListActive = $(this).parents('.submenu').find('>li').eq(index);
-            newListActive.siblings('li').hide();
-            newListActive.show();
-        });
 
         $('.menu__item--hamburger .submenu > li').click(function(){
             $('.menu__item--hamburger .submenu > li').hide();
@@ -487,18 +478,30 @@ APP.sliderRestaurants = (function () {
             var bannersHeight = getBannerHeight();
             $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
 
-            var slider = $('.slider-restaurants__container').bxSlider({
+            var sliderDesktop = $('.slider-restaurants--desktop .slider-restaurants__container').bxSlider({
                 slideWidth: 9999,
                 minSlides: 4,
                 maxSlides: 4,
                 moveSlides: 2,
                 pager: false,
-                nextSelector: '.slider-restaurants__controllers__right',
-                prevSelector: '.slider-restaurants__controllers__left',
+                nextSelector: '.slider-restaurants--desktop .slider-restaurants__controllers__right',
+                prevSelector: '.slider-restaurants--desktop .slider-restaurants__controllers__left',
                 nextText: '',
                 prevText: ''
             });
-        })
+
+            var sliderMobile = $('.slider-restaurants--mobile .slider-restaurants__container').bxSlider({
+                slideWidth: 9999,
+                minSlides: 2,
+                maxSlides: 2,
+                moveSlides: 2,
+                pager: false,
+                nextSelector: '.slider-restaurants--mobile .slider-restaurants__controllers__right',
+                prevSelector: '.slider-restaurants--mobile .slider-restaurants__controllers__left',
+                nextText: '',
+                prevText: ''
+            });
+        });
     };
 
     var getBannerHeight = function(){

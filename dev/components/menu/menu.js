@@ -24,15 +24,6 @@ APP.menu = (function () {
                 }
             }
     	});
-        $('.menu__item--calendar .submenu__items a').click(function(e){
-            e.preventDefault();
-            var index = $(this).index();
-            $(this).addClass('is-active');
-            $(this).siblings().removeClass('is-active');
-            var newListActive = $(this).parents('.submenu').find('>li').eq(index);
-            newListActive.siblings('li').hide();
-            newListActive.show();
-        });
 
         $('.menu__item--hamburger .submenu > li').click(function(){
             $('.menu__item--hamburger .submenu > li').hide();
