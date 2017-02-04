@@ -4,8 +4,11 @@ var APP = window.APP = window.APP || {};
 
 APP.sliderRestaurants = (function () {
 
+    var sliderRestaurantDesktopActive = 0;
+
     var init = function (element) {
     	console.log('APP.sliderRestaurants');
+        $('.slider-restaurants--desktop').first().addClass('active');
     	bindEventsToUI();
     };
 
@@ -22,8 +25,7 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup__close').click(function(e){
             e.preventDefault();
             $('.popup').hide();
-            $('.slider-restaurants__popup').fadeOut();
-            
+            $('.slider-restaurants__popup').fadeOut();  
         });
 
         $('.slider-restaurants--mobile .slider-restaurants__popup__close').click(function(){
@@ -75,22 +77,51 @@ APP.sliderRestaurants = (function () {
             }, function(response){});
         });
 
+        $('.slider-restaurants__controllers__up').click(function(){
+            if($('.slider-restaurants--desktop.active').prev('.slider-restaurants').length > 0 ){ //get prev slider
+                $('.slider-restaurants--desktop.active').toggleClass('active').prev('.slider-restaurants').addClass('active');
+                sliderRestaurantDesktopActive = sliderRestaurantDesktopActive - 1;
+            }else{
+                $('.slider-restaurants--desktop.active').toggleClass('active');
+                $('.slider-restaurants--desktop').last().addClass('active');
+                sliderRestaurantDesktopActive = $('.slider-restaurants--desktop').last().index() - 1;
+            }
+            translateSlider();
+        });
+
+        $('.slider-restaurants__controllers__down').click(function(){
+            if($('.slider-restaurants--desktop.active').next('.slider-restaurants').length > 0 ){ //get next slider
+                $('.slider-restaurants--desktop.active').toggleClass('active').next('.slider-restaurants').addClass('active');
+                sliderRestaurantDesktopActive = sliderRestaurantDesktopActive + 1;
+            }else{
+                $('.slider-restaurants--desktop.active').toggleClass('active');
+                $('.slider-restaurants--desktop').first().addClass('active');
+                sliderRestaurantDesktopActive = 0;
+            }
+            translateSlider();
+        });
+
         $(document).ready(function(){
             var bannersHeight = getBannerHeight();
-            $('.slider-restaurants').css('height','calc(100% - '+bannersHeight+'px)');
+            $('.slider-restaurants__wrapper').css('height','calc(100% - '+bannersHeight+'px)');
 
-            var sliderDesktop = $('.slider-restaurants--desktop .slider-restaurants__container').bxSlider({
-                slideWidth: 9999,
-                minSlides: 4,
-                maxSlides: 4,
-                moveSlides: 2,
-                pager: false,
-                nextSelector: '.slider-restaurants--desktop .slider-restaurants__controllers__right',
-                prevSelector: '.slider-restaurants--desktop .slider-restaurants__controllers__left',
-                nextText: '',
-                prevText: ''
+            var sliderDesktop = $('.slider-restaurants--desktop .slider-restaurants__container').each(function(index){
+                var id = 'slider-restaurants--desktop'+index;
+                $(this).parent().attr('id',id);
+                $(this).bxSlider({
+                    slideWidth: 9999,
+                    minSlides: 4,
+                    maxSlides: 4,
+                    moveSlides: 2,
+                    pager: false,
+                    nextSelector: '#'+id+' .slider-restaurants__controllers__right',
+                    prevSelector: '#'+id+' .slider-restaurants__controllers__left',
+                    nextText: '',
+                    prevText: ''
+                });
             });
 
+            /*
             var sliderMobile = $('.slider-restaurants--mobile .slider-restaurants__container').bxSlider({
                 slideWidth: 9999,
                 minSlides: 2,
@@ -101,8 +132,18 @@ APP.sliderRestaurants = (function () {
                 prevSelector: '.slider-restaurants--mobile .slider-restaurants__controllers__left',
                 nextText: '',
                 prevText: ''
-            });
+            });*/
         });
+    };
+
+    var translateSlider = function(){
+        var selectSlider;
+        if(sliderRestaurantDesktopActive == 0){
+            selectSlider = '0px';
+        }else{
+            selectSlider = 'calc(-'+sliderRestaurantDesktopActive*100+'% - 30px)';
+        }
+        $('.slider-restaurants--desktop').transition({ y: selectSlider });
     };
 
     var getBannerHeight = function(){

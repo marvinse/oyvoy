@@ -2,8 +2,13 @@
 	{{>menu}}
 	<div class="container">
 		{{>banner bannerclass='top'}}
-		{{>slider-restaurants modifierDesktop='slider-restaurants--desktop'}}
-		{{>slider-restaurants modifierMobile='slider-restaurants--mobile'}}
+		<div class="slider-restaurants__wrapper">
+			<img class="slider-restaurants__controllers__up" src="images/controller-up.png" />
+			{{>slider-restaurants-desktop}}
+			{{>slider-restaurants-desktop}}
+			<img class="slider-restaurants__controllers__down" src="images/controller-down.png" />
+		</div>
+		<!--{{>slider-restaurants-mobile}}-->
 		<div class="clear"></div>
 		{{>banner bannerclass='bottom'}}
 		<div class="popup"></div>
