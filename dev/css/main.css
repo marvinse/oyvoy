@@ -1090,7 +1090,7 @@ figure {
   .slider-restaurants__wrapper {
     overflow: hidden;
     position: relative;
-    padding: 60px 0; }
+    padding: 20px 0; }
     @media only screen and (min-width: 768px) {
       .slider-restaurants__wrapper {
         padding: 30px 0; } }
