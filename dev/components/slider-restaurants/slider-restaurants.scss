@@ -1,24 +1,46 @@
 @import "../global/vars";
 .slider-restaurants{
 	display: none;
-	padding: 0 38px;
+	padding: 0 20px;
+	overflow: hidden;
 	position: relative;
-	&__wrapper{
-		overflow: hidden;
-		position: relative;
-		@include respond-to($tablet-portrait){
-			padding: 30px 0;
-		}
-	}
+	margin-bottom: 60px;
 	@include respond-to($tablet-portrait){
 		display: block;
 		margin-bottom: 30px;
-		overflow: hidden;
 		z-index: 1;
+	}
+	&__wrapper{
+		overflow: hidden;
+		position: relative;
+		padding: 60px 0;
+		@include respond-to($tablet-portrait){
+			padding: 30px 0;
+		}
+		&--desktop{
+			display: none;
+			@include respond-to($tablet-portrait){
+				display: block;
+			}
+		}
+		&--mobile{
+			@include respond-to($tablet-portrait){
+				display: none;
+			}
+		}
+	}
+	&__container{
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+		@include respond-to($tablet-portrait){
+			height: auto;
+			padding: 0;
+		}
 	}
 	&--mobile{
 		display: block;
-		padding-top: 40%;
+		height: 100%;
 		@include respond-to($tablet-portrait){
 			display: none;
 		}
@@ -34,6 +56,7 @@
 		}
 		>img{
 			display: inline-block;
+			max-width: 100%;
 			@include respond-to($tablet-portrait){
 				height: 100%;
 			}
@@ -111,14 +134,14 @@
 		display: none;
 		height: 100%;
 		left: 0;
-		margin: 5px 15px;
+		margin: 60px 15px;
 		overflow-y: scroll;
 		position: absolute;
 		right: 0;
 		top: 0;
 		z-index: 3;
 		@include respond-to($tablet-portrait){
-			margin: 0 38px;
+			margin: 100px 20px 0;
 		}
 		&__options{
 			display: none;
@@ -535,23 +558,6 @@
 			}
 		}
 	}
-	.create-review{
-		color: black;
-		font-size: 14px;
-		font-style: italic;
-		font-weight: bold;
-		margin-left: 60px;
-		text-decoration: none;
-		&--desktop{
-			display: none;
-			float: right;
-			font-size: 16px;
-			margin-left: 0;
-			@include respond-to($tablet-portrait){
-				display: block;
-			}
-		}
-	}
 	&__controllers{
 		&__up, &__down{
 			cursor: pointer;
@@ -559,6 +565,7 @@
 			margin: auto;
 			position: absolute;
 		    right: 0;
+		    z-index: 2;
 		}
 		&__up{
 			top: 5px;
@@ -568,27 +575,63 @@
 		}
 		&__left, &__right{
 			bottom: 0;
-			height: 28px;
+			height: 61px;
 			margin: auto;
 			position: absolute;
 			top: 0;
+			@include respond-to($tablet-portrait){
+				height: 28px;
+			}
 			a{
 				display: inline-block;
-				height: 28px;
-				width: 18px;
+				height: 61px;
+				width: 48px;
+				@include respond-to($tablet-portrait){
+					height: 28px;
+					width: 18px;
+				}
 			}
 		}
 		&__left{
-			left: 10px;
+			left: 0;
+			@include respond-to($tablet-portrait){
+				left: 10px;
+			}
 			a{
-				background: url('../images/controller-left.png') no-repeat;
+				background: url('../images/controller-left-mobile.png') no-repeat;
+				@include respond-to($tablet-portrait){
+					background: url('../images/controller-left.png') no-repeat;
+				}
 			}
 		}
 		&__right{
-			right: 10px;
-			a{
-				background: url('../images/controller-right.png') no-repeat;
+			right: 0;
+			@include respond-to($tablet-portrait){
+				right: 10px;
 			}
+			a{
+				background: url('../images/controller-right-mobile.png') no-repeat;
+				@include respond-to($tablet-portrait){
+					background: url('../images/controller-right.png') no-repeat;
+				}
+			}
+		}
+	}
+}
+.create-review{
+	color: black;
+	font-size: 14px;
+	font-style: italic;
+	font-weight: bold;
+	margin-left: 60px;
+	text-decoration: none;
+	&--desktop{
+		display: none;
+		float: right;
+		font-size: 16px;
+		margin-left: 0;
+		@include respond-to($tablet-portrait){
+			display: block;
 		}
 	}
 }
