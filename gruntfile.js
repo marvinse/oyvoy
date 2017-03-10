@@ -66,7 +66,7 @@ module.exports = function(grunt) {
             main: {
                 expand: true,
                 cwd: 'dev/',
-                src: ['fonts/**','images/**'],
+                src: ['fonts/**','images/**','pages/handlebar-templates.html'],
                 dest: 'build/',
             }
         },
@@ -85,6 +85,10 @@ module.exports = function(grunt) {
             hbs: {
                 files: ['dev/*/*.hbs','dev/*/*/*.hbs'],
                 tasks: ['compile-handlebars']
+            },
+            copy:{
+                files: ['dev/pages/handlebar-templates.html'],
+                tasks: ['copy']
             }
         }
     });

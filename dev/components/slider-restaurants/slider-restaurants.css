@@ -7,8 +7,7 @@
   @media only screen and (min-width: 768px) {
     .slider-restaurants {
       display: block;
-      margin-bottom: 30px;
-      z-index: 1; } }
+      margin-bottom: 30px; } }
   .slider-restaurants__wrapper {
     overflow: hidden;
     position: relative;

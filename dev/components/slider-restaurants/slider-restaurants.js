@@ -9,9 +9,41 @@ APP.sliderRestaurants = (function () {
 
     var init = function (element) {
     	console.log('APP.sliderRestaurants');
-        $('.slider-restaurants--desktop').first().addClass('active');
-        $('.slider-restaurants--mobile').first().addClass('active');
-    	bindEventsToUI();
+        $('body').on('handlebar-templates-loaded',setSliders);
+        
+    };
+
+    var setSliders = function(){
+        var slidersCategories = APP.global.connectToAPI.getCategories(null);
+        setSliderFor('desktop',slidersCategories);
+        setSliderFor('mobile',slidersCategories);
+        setImagesForSliders();
+        bindEventsToUI();
+    };
+
+    var setImagesForSliders = function(){
+        var HTMLTemplate = $('#handlebars-slider-image').html();
+        var templateScript = Handlebars.compile(HTMLTemplate);
+        var categoriesContainers = $('.slider-restaurants.slider-restaurants--desktop .slider-restaurants__container[data-category]');
+        categoriesContainers.each(function(index, element){//append all images related with current category
+            var self = $(this);
+            var slidersPerCategory = APP.global.connectToAPI.getOffersByCategory( self.data('category') );
+            $.each(slidersPerCategory,function(i,slider){
+                var html = templateScript(slider);
+                self.append(html);
+            });
+        });
+    };
+
+    var setSliderFor = function(slider,slidersCategories){
+        var HTMLTemplate = $('#handlebars-slider-restaurants-'+slider).html();
+        var templateScript = Handlebars.compile(HTMLTemplate);
+        $.each(slidersCategories,function(i,category){
+            var html = templateScript(slidersCategories[i]);
+            $('.slider-restaurants__wrapper--'+slider+' div.replace-with-ajax').after(html);
+        });
+        $('.slider-restaurants__wrapper--'+slider+' div.replace-with-ajax').remove();
+        $('.slider-restaurants--'+slider).first().addClass('active');
     };
 
     var bindEventsToUI = function(){

@@ -8,7 +8,6 @@
 	@include respond-to($tablet-portrait){
 		display: block;
 		margin-bottom: 30px;
-		z-index: 1;
 	}
 	&__wrapper{
 		overflow: hidden;

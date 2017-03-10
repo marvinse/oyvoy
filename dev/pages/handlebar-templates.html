@@ -1,0 +1,60 @@
+<script id="handlebars-favorites" type="text/x-handlebars-template">
+	{{#each this}}
+		<li>
+			<a href="#" class="submenu-favorites__delete"><img src="images/trashcan.png" /></a>
+			<div class="submenu-favorites__confirmation">
+				<a class="submenu-favorites__confirmation__no" href="#">No</a>
+				<a class="submenu-favorites__confirmation__yes" href="#">Si</a>
+				<h3>Eliminar de favoritos?</h3>
+			</div>
+			<img src="images/examples/eventos-placeholder-image-3.png">
+			<span class="submenu-favorites__event">{{OfferId}}</span>
+		</li>
+	{{/each}}
+</script>
+<script id="handlebars-slider-restaurants-desktop" type="text/x-handlebars-template">
+	<div class="slider-restaurants slider-restaurants--desktop">
+		<div class="slider-restaurants__container" data-category="{{categoryId}}">
+			
+
+
+
+
+
+
+		</div>
+		<div class="slider-restaurants__controllers">
+			<p class="slider-restaurants__controllers__left"></p>
+			<p class="slider-restaurants__controllers__right"></p>
+		</div>
+	</div>
+</script>
+<script id="handlebars-slider-restaurants-mobile" type="text/x-handlebars-template">
+	<div class="slider-restaurants slider-restaurants--mobile">
+		<div class="slider-restaurants__container" data-category="{{categoryId}}">
+			<div><!--make a div for each 4 elements-->
+				<div class="slider-restaurants__restaurant">
+					<img src="images/examples/card-promo-placeholder.png" />
+				</div>
+				<div class="slider-restaurants__restaurant">
+					<img src="images/examples/card-promo-placeholder.png" />
+				</div>
+				<div class="slider-restaurants__restaurant">
+					<img src="images/examples/card-promo-placeholder.png" />
+				</div>
+				<div class="slider-restaurants__restaurant">
+					<img src="images/examples/card-promo-placeholder.png" />
+				</div>
+			</div>
+		</div>
+		<div class="slider-restaurants__controllers">
+			<p class="slider-restaurants__controllers__left"></p>
+			<p class="slider-restaurants__controllers__right"></p>
+		</div>
+	</div>
+</script>
+<script id="handlebars-slider-image" type="text/x-handlebars-template">
+	<div class="slider-restaurants__restaurant">
+		<img src="images/examples/full-lugar-card-placeholder.png" />
+	</div>
+</script>
