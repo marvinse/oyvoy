@@ -8,7 +8,13 @@ APP.slidebox = (function () {
 
     var init = function (element) {
         console.log('APP.slidebox');
-    	bindEventsToUI();
+    };
+
+    var setImagesForSlidebox = function(slideboxImages){
+        $.each(slideboxImages,function(i,slideboxImage){
+            $('.slidebox__container .slidebox').append('<img data-popup="'+document.location.origin+'/'+slideboxImage.ImageUrl+'" src="'+document.location.origin+'/'+slideboxImage.ImageUrl+'" />');
+        });
+        bindEventsToUI();
     };
 
     var bindEventsToUI = function(){
@@ -90,7 +96,8 @@ APP.slidebox = (function () {
     };
 
     return {
-        init: init
+        init: init,
+        setImagesForSlidebox: setImagesForSlidebox
     };
 
 }());

@@ -4907,15 +4907,17 @@ APP.banner = (function () {
         $.each(banners,function(i,banner){
             for (var i = 0; i < banner.BannerCarrousel.length; i++) {
                 if(banner.Name == 'Banner Top'){
-                    $('.bxslider.top').append('<img src=\''+banner.BannerCarrousel[i].ImageUrl+'\'>');
+                    $('.bxslider.top').append('<img src=\''+document.location.origin+'/'+banner.BannerCarrousel[i].ImageUrl+'\'>');
                 }else{
-                    $('.bxslider.bottom').append('<img src=\''+banner.BannerCarrousel[i].ImageUrl+'\'>');
+                    $('.bxslider.bottom').append('<img src=\''+document.location.origin+'/'+banner.BannerCarrousel[i].ImageUrl+'\'>');
                 }
             }
         });
-    	$(document).ready(function(){
-			$('.bxslider').bxSlider(settings);
-		});
+    	$(window).load(function(){
+            $('.bxslider').bxSlider(settings);
+            bannersHeight = parseInt($('.banner').css('height')) * 2;
+            $('.slider-restaurants__wrapper, .slider-restaurants__popup').css('height','calc(100% - '+bannersHeight+'px)');
+        });
     };
 
     return {
@@ -5011,17 +5013,20 @@ APP.global = (function () {
             });
     	},
     	getOffers: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/OffersApi/GetAll',
                 headers: this.requestToken(),
                 data: { value : val },
                 success: function (data) {
-                    
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
         getBanners: function(val) {
         	var response;
@@ -5340,7 +5345,13 @@ APP.slidebox = (function () {
 
     var init = function (element) {
         console.log('APP.slidebox');
-    	bindEventsToUI();
+    };
+
+    var setImagesForSlidebox = function(slideboxImages){
+        $.each(slideboxImages,function(i,slideboxImage){
+            $('.slidebox__container .slidebox').append('<img data-popup="'+document.location.origin+'/'+slideboxImage.ImageUrl+'" src="'+document.location.origin+'/'+slideboxImage.ImageUrl+'" />');
+        });
+        bindEventsToUI();
     };
 
     var bindEventsToUI = function(){
@@ -5422,7 +5433,8 @@ APP.slidebox = (function () {
     };
 
     return {
-        init: init
+        init: init,
+        setImagesForSlidebox: setImagesForSlidebox
     };
 
 }());
@@ -5476,8 +5488,26 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants--'+slider).first().addClass('active');
     };
 
+    var changePopupContent = function(offerId){
+        var offer = APP.global.connectToAPI.getOffers(offerId);
+        $('.slider-restaurants__popup__header__main-image h1').html(offer[0].Name);
+        $('.slider-restaurants__popup__general-info-description').html(offer[0].Description);
+        $('.slider-restaurants__popup__score img').attr('src','images/'+offer[0].Rating+'-stars.png');
+        $('.slider-restaurants__popup__header figure img').attr('src',document.location.origin+'/'+offer[0].Thumbnail);
+        $('.slider-restaurants__popup__header__main-image > img').attr('src',document.location.origin+'/'+offer[0].FullSize);
+        $('.slider-restaurants__popup__how-to-get__long-direction p').html(offer[0].HotoGetThere);
+        $('.slider-restaurants__popup__directions .google').attr('href',offer[0].Googlemap);
+        $('.slider-restaurants__popup__directions .waze').attr('href',offer[0].Waze);
+        $('.slider-restaurants__popup__schedule p').html(offer[0].Schedule);
+        $('.slider-restaurants__popup__facilities .parking').addClass(offer[0].ParkingAllowed==true?'available':'no-available');
+        $('.slider-restaurants__popup__facilities .kids').addClass(offer[0].ChildrenZone==true?'available':'no-available');
+        APP.slidebox.setImagesForSlidebox(offer[0].Carrousel);
+    };
+
     var bindEventsToUI = function(){
         $('.slider-restaurants').on('click','.slider-restaurants__restaurant > img',function(){
+            //change content of popup then show the popup
+            changePopupContent( $(this).data('id') );
             $('.popup').show();
             var isMobile = $(this).parents('.slider-restaurants').hasClass('slider-restaurants--mobile');
             $('.slider-restaurants__popup').fadeIn('slow',function(){
@@ -5559,9 +5589,7 @@ APP.sliderRestaurants = (function () {
             translateSlider(sliderToMove, isDesktop);
         });
 
-        $(document).ready(function(){
-            var bannersHeight = getBannerHeight();
-            $('.slider-restaurants__wrapper, .slider-restaurants__popup').css('height','calc(100% - '+bannersHeight+'px)');
+        $(window).load(function(){
 
             var sliderDesktop = $('.slider-restaurants--desktop .slider-restaurants__container').each(function(index){
                 var id = 'slider-restaurants--desktop'+index;
@@ -5648,10 +5676,6 @@ APP.sliderRestaurants = (function () {
             }
         }
         $(slider).transition({ y: selectSlider });
-    };
-
-    var getBannerHeight = function(){
-        return parseInt($('.banner').css('height')) * 2;
     };
 
     return {

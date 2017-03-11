@@ -1,12 +1,13 @@
-.banner {
-  overflow: hidden; }
-  .banner img {
-    max-height: 100px;
-    width: 100%; }
-  .banner.bottom {
-    bottom: 0;
-    position: absolute;
-    width: 100%; }
+@media only screen and (min-width: 768px) {
+  .banner {
+    height: 100px; } }
+.banner img {
+  max-height: 100px;
+  width: 100%; }
+.banner.bottom {
+  bottom: 0;
+  position: absolute;
+  width: 100%; }
 
 .bx-wrapper .bx-viewport {
   border: 0;

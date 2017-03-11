@@ -35,6 +35,11 @@
 		}
 		&__image-container{
 			position: relative;
+			img{
+				@include respond-to($tablet-portrait){
+					width: 510px;
+				}
+			}
 		}
 		&__close{
 			cursor: pointer;

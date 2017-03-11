@@ -1,6 +1,8 @@
 @import "../global/vars";
 .banner{
-	overflow: hidden;
+	@include respond-to($tablet-portrait){
+		height: 100px; 
+	}
 	img{
 		max-height: 100px;
 		width: 100%;
