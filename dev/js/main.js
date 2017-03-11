@@ -5118,15 +5118,19 @@ APP.global = (function () {
             });
         },
         getReviewsByOffer: function(val) {
+            var response
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/ReviewsApi/GetReviewsByOffer/' + val,
                 headers: this.requestToken(),
                 success: function (data) {
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
         postReview: function(pOfferVal, pUserVal, pRate, pMessage) {
             var ReviewsModel = new Object();
@@ -5174,15 +5178,19 @@ APP.global = (function () {
             return response;
         },
         getUserById: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/UserApi/GetById/' + val,
                 headers: this.requestToken(),
                 success: function (data) {
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
         updatetUser: function(pName, pId, pLastName, pFirstName) {
             var UsersModel = new Object();
@@ -5502,6 +5510,21 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup__facilities .parking').addClass(offer[0].ParkingAllowed==true?'available':'no-available');
         $('.slider-restaurants__popup__facilities .kids').addClass(offer[0].ChildrenZone==true?'available':'no-available');
         APP.slidebox.setImagesForSlidebox(offer[0].Carrousel);
+        setReviewsByOffer(offerId);
+    };
+
+    var setReviewsByOffer = function(offerId){
+        var reviews = APP.global.connectToAPI.getReviewsByOffer(offerId);
+        var HTMLTemplate = $('#handlebars-review').html();
+        var templateScript = Handlebars.compile(HTMLTemplate);
+        $.each(reviews,function(i,review){
+            var author = APP.global.connectToAPI.getUserById(review.UserId);
+            review.Author = author.UserName;
+            var html = templateScript(review);
+            $('.slider-restaurants__popup__reviews .replace-with-ajax').after(html);
+        });
+        $('.slider-restaurants__popup__reviews__quantity').html('('+reviews.length+')');
+        $('.slider-restaurants__popup__reviews .replace-with-ajax').remove();
     };
 
     var bindEventsToUI = function(){

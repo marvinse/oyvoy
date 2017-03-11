@@ -156,15 +156,19 @@ APP.global = (function () {
             });
         },
         getReviewsByOffer: function(val) {
+            var response
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/ReviewsApi/GetReviewsByOffer/' + val,
                 headers: this.requestToken(),
                 success: function (data) {
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
         postReview: function(pOfferVal, pUserVal, pRate, pMessage) {
             var ReviewsModel = new Object();
@@ -212,15 +216,19 @@ APP.global = (function () {
             return response;
         },
         getUserById: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/UserApi/GetById/' + val,
                 headers: this.requestToken(),
                 success: function (data) {
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
         updatetUser: function(pName, pId, pLastName, pFirstName) {
             var UsersModel = new Object();
