@@ -12,8 +12,8 @@
 		</li>
 	{{/each}}
 </script>
-<script id="handlebars-slider-restaurants-desktop" type="text/x-handlebars-template">
-	<div class="slider-restaurants slider-restaurants--desktop">
+<script id="handlebars-slider-restaurants" type="text/x-handlebars-template">
+	<div class="slider-restaurants slider-restaurants--{{type}}">
 		<div class="slider-restaurants__container" data-category="{{categoryId}}">
 
 		</div>
@@ -23,42 +23,28 @@
 		</div>
 	</div>
 </script>
-<script id="handlebars-slider-restaurants-mobile" type="text/x-handlebars-template">
-	<div class="slider-restaurants slider-restaurants--mobile">
-		<div class="slider-restaurants__container" data-category="{{categoryId}}">
-			<div><!--make a div for each 4 elements-->
-				<div class="slider-restaurants__restaurant">
-					<img src="images/examples/card-promo-placeholder.png" />
-				</div>
-				<div class="slider-restaurants__restaurant">
-					<img src="images/examples/card-promo-placeholder.png" />
-				</div>
-				<div class="slider-restaurants__restaurant">
-					<img src="images/examples/card-promo-placeholder.png" />
-				</div>
-				<div class="slider-restaurants__restaurant">
-					<img src="images/examples/card-promo-placeholder.png" />
-				</div>
-			</div>
-		</div>
-		<div class="slider-restaurants__controllers">
-			<p class="slider-restaurants__controllers__left"></p>
-			<p class="slider-restaurants__controllers__right"></p>
-		</div>
-	</div>
-</script>
 <script id="handlebars-slider-image" type="text/x-handlebars-template">
 	<div class="slider-restaurants__restaurant">
-		<img data-id="{{Id}}" src="http://www.oyvoy.com/{{BannerDesktop}}" />
+		<img data-id="{{Id}}" src="http://www.oyvoy.com/{{Banner}}" />
 	</div>
 </script>
 <script id="handlebars-review" type="text/x-handlebars-template">
 	<div class="slider-restaurants__popup__review slider-restaurants__popup__review--desktop">
 		<div>
-			<h3 class="slider-restaurants__popup__review__title">TITLE HERE</h3>
+			<h3 class="slider-restaurants__popup__review__title">{{Ttile}}</h3>
 			<img src="images/{{Rate}}-stars.png" />
 		</div>
 		<p class="slider-restaurants__popup__review__message">{{Message}}</p>
+		<h3 class="slider-restaurants__popup__review__author">{{Author}}</h3>
+	</div>
+</script>
+<script id="handlebars-review-mobile" type="text/x-handlebars-template">
+	<div class="slider-restaurants__popup__review">
+		<div>
+			<h3>{{Ttile}}</h3>
+			<img src="images/{{Rate}}-stars.png" />
+		</div>
+		<p>{{Message}}</p>
 		<h3 class="slider-restaurants__popup__review__author">{{Author}}</h3>
 	</div>
 </script>

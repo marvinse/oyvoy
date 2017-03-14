@@ -5,16 +5,22 @@ var APP = window.APP = window.APP || {};
 APP.slidebox = (function () {
 
     var sizeOfEachSlide = 510;
+    var eventsAlreadyBinded = false;
 
     var init = function (element) {
         console.log('APP.slidebox');
     };
 
     var setImagesForSlidebox = function(slideboxImages){
+        //empty the slidebox and then fill it
+        $('.slidebox__container .slidebox').html('');
         $.each(slideboxImages,function(i,slideboxImage){
             $('.slidebox__container .slidebox').append('<img data-popup="'+document.location.origin+'/'+slideboxImage.ImageUrl+'" src="'+document.location.origin+'/'+slideboxImage.ImageUrl+'" />');
         });
-        bindEventsToUI();
+        if(!eventsAlreadyBinded){
+            bindEventsToUI();
+            eventsAlreadyBinded = true;
+        }
     };
 
     var bindEventsToUI = function(){
@@ -50,6 +56,7 @@ APP.slidebox = (function () {
 
         $('body').on('initMobileSlider',function(){
             $('.slider-restaurants--desktop').remove();
+            $('.slidebox').off('click', 'img');
             window.slideboxmobile = $('.slidebox--mobile').bxSlider({
                 slideWidth: 9999,
                 minSlides: 4,
@@ -58,7 +65,7 @@ APP.slidebox = (function () {
                 pager: false,
                 nextText: '',
                 prevText: '',
-                auto: true
+                auto: false
             });
         });
 

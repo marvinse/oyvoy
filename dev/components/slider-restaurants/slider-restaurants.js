@@ -17,28 +17,42 @@ APP.sliderRestaurants = (function () {
         var slidersCategories = APP.global.connectToAPI.getCategories(null);
         setSliderFor('desktop',slidersCategories);
         setSliderFor('mobile',slidersCategories);
-        setImagesForSliders();
+        setImagesForSliders('desktop');
+        setImagesForSliders('mobile');
         bindEventsToUI();
     };
 
-    var setImagesForSliders = function(){
+    var setImagesForSliders = function(slider){
         var HTMLTemplate = $('#handlebars-slider-image').html();
         var templateScript = Handlebars.compile(HTMLTemplate);
-        var categoriesContainers = $('.slider-restaurants.slider-restaurants--desktop .slider-restaurants__container[data-category]');
+        var categoriesContainers = $('.slider-restaurants.slider-restaurants--'+slider+' .slider-restaurants__container[data-category]');
         categoriesContainers.each(function(index, element){//append all images related with current category
             var self = $(this);
             var slidersPerCategory = APP.global.connectToAPI.getOffersByCategory( self.data('category') );
-            $.each(slidersPerCategory,function(i,slider){
-                var html = templateScript(slider);
-                self.append(html);
-            });
+            if(slider=='mobile'){
+                $.each(slidersPerCategory,function(i,slider){
+                    slider.Banner = slider.BannerMobile;
+                    var html = templateScript(slider);
+                    if(i%4 == 0){ //make a div each 4 elements
+                        self.append('<div class="each-4-elements"></div>');
+                    }
+                    self.find('.each-4-elements').last().append(html)
+                });
+            }else{
+                $.each(slidersPerCategory,function(i,slider){
+                    slider.Banner = slider.BannerDesktop;
+                    var html = templateScript(slider);
+                    self.append(html);
+                });
+            }
         });
     };
 
     var setSliderFor = function(slider,slidersCategories){
-        var HTMLTemplate = $('#handlebars-slider-restaurants-'+slider).html();
+        var HTMLTemplate = $('#handlebars-slider-restaurants').html();
         var templateScript = Handlebars.compile(HTMLTemplate);
         $.each(slidersCategories,function(i,category){
+            slidersCategories[i].type = slider=='desktop'?'desktop':'mobile';
             var html = templateScript(slidersCategories[i]);
             $('.slider-restaurants__wrapper--'+slider+' div.replace-with-ajax').after(html);
         });
@@ -53,12 +67,16 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup__score img').attr('src','images/'+offer[0].Rating+'-stars.png');
         $('.slider-restaurants__popup__header figure img').attr('src',document.location.origin+'/'+offer[0].Thumbnail);
         $('.slider-restaurants__popup__header__main-image > img').attr('src',document.location.origin+'/'+offer[0].FullSize);
-        $('.slider-restaurants__popup__how-to-get__long-direction p').html(offer[0].HotoGetThere);
+        $('.slider-restaurants__popup__how-to-get__long-direction p, .slider-restaurants__popup__full-direction p').html(offer[0].HotoGetThere);
+        shortDirection = (offer[0].HotoGetThere).slice(0, 10);
+        $('.slider-restaurants__popup__how-to-get__short-direction p').html(shortDirection+'...');
         $('.slider-restaurants__popup__directions .google').attr('href',offer[0].Googlemap);
         $('.slider-restaurants__popup__directions .waze').attr('href',offer[0].Waze);
         $('.slider-restaurants__popup__schedule p').html(offer[0].Schedule);
-        $('.slider-restaurants__popup__facilities .parking').addClass(offer[0].ParkingAllowed==true?'available':'no-available');
-        $('.slider-restaurants__popup__facilities .kids').addClass(offer[0].ChildrenZone==true?'available':'no-available');
+        $('.slider-restaurants__popup__facilities .parking').removeClass().addClass('parking').addClass(offer[0].ParkingAllowed==true?'available':'no-available');
+        $('.slider-restaurants__popup__facilities .kids').removeClass().addClass('kids').addClass(offer[0].ChildrenZone==true?'available':'no-available');
+        $('.slider-restaurants__popup__general-info__site').html(offer[0].WebSiteUrl);
+        $('.slider-restaurants__popup__general-info__site').attr('src',offer[0].WebSiteUrl);
         APP.slidebox.setImagesForSlidebox(offer[0].Carrousel);
         setReviewsByOffer(offerId);
     };
@@ -66,15 +84,25 @@ APP.sliderRestaurants = (function () {
     var setReviewsByOffer = function(offerId){
         var reviews = APP.global.connectToAPI.getReviewsByOffer(offerId);
         var HTMLTemplate = $('#handlebars-review').html();
+        var HTMLTemplateMobile = $('#handlebars-review-mobile').html();
         var templateScript = Handlebars.compile(HTMLTemplate);
+        var templateScriptMobile = Handlebars.compile(HTMLTemplateMobile);
         $.each(reviews,function(i,review){
             var author = APP.global.connectToAPI.getUserById(review.UserId);
             review.Author = author.UserName;
             var html = templateScript(review);
+            var htmlMobile = templateScriptMobile(review);
             $('.slider-restaurants__popup__reviews .replace-with-ajax').after(html);
+            $('.slider-restaurants__popup__reviews--mobile .replace-with-ajax').after(htmlMobile);
         });
+        shortReview = (reviews[0].Message).slice(0, 30);
+        $('.slider-restaurants__popup__reviews__short-description p').html(shortReview+'...');
         $('.slider-restaurants__popup__reviews__quantity').html('('+reviews.length+')');
-        $('.slider-restaurants__popup__reviews .replace-with-ajax').remove();
+    };
+
+    var removeReviews = function(){
+        $('.slider-restaurants__popup__reviews .replace-with-ajax').siblings('.slider-restaurants__popup__review--desktop').remove();
+        $('.slider-restaurants__popup__reviews--mobile .replace-with-ajax').siblings('.slider-restaurants__popup__review').remove();
     };
 
     var bindEventsToUI = function(){
@@ -93,7 +121,8 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup__close').click(function(e){
             e.preventDefault();
             $('.popup').hide();
-            $('.slider-restaurants__popup').fadeOut();  
+            $('.slider-restaurants__popup').fadeOut();
+            removeReviews(); 
         });
 
         $('.slider-restaurants--mobile .slider-restaurants__popup__close').click(function(){
