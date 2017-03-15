@@ -8,11 +8,10 @@
 		width: 100%;
 	}
 	&.bottom{
-		bottom: 55px;
-		position: absolute;
+		bottom: 0;
+		position: fixed;
 		width: 100%;
 		@include respond-to($tablet-portrait){
-			
 		}
 	}
 }

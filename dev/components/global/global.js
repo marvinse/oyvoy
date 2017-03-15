@@ -274,6 +274,20 @@ APP.global = (function () {
                 error: function (error) {
                 }
             });
+        },
+        getOffersByDateType: function(val) {
+            $.ajax({
+                type: "GET",
+                url: this.rootPath + '/api/OffersApi/GetByDateType',
+                headers: this.requestToken(),
+                data: { value: val },
+                success: function (data) {
+
+                },
+                error: function (error) {
+
+                }
+            });
         }
 	};
 
