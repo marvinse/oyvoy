@@ -696,8 +696,8 @@ figure {
   max-height: 100px;
   width: 100%; }
 .banner.bottom {
-  bottom: 55px;
-  position: absolute;
+  bottom: 0;
+  position: fixed;
   width: 100%; }
 
 .bx-wrapper .bx-viewport {
@@ -972,6 +972,9 @@ figure {
       @media only screen and (min-width: 768px) {
         .menu__item--chat .submenu {
           top: -200px; } }
+    .menu__item--contact #map {
+      height: 310px;
+      width: 300px; }
     .menu__item--contact > span {
       background: url("../images/contact-icon.png"); }
       .menu__item--contact > span.is-active {

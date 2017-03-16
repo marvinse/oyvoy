@@ -281,7 +281,8 @@ APP.sliderRestaurants = (function () {
     };
 
     return {
-        init: init
+        init: init,
+        changePopupContent: changePopupContent
     };
 
 }());

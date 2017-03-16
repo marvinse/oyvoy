@@ -4914,8 +4914,8 @@ APP.banner = (function () {
             }
         });
     	$(window).load(function(){
-            $('.bxslider').bxSlider(settings);
             bannersHeight = parseInt($('.banner').css('height')) * 2;
+            $('.bxslider').bxSlider(settings);
             $('.slider-restaurants__wrapper, .slider-restaurants__popup').css('height','calc(100% - '+bannersHeight+'px)');
         });
     };
@@ -5236,6 +5236,20 @@ APP.global = (function () {
                 error: function (error) {
                 }
             });
+        },
+        getOffersByDateType: function(val) {
+            $.ajax({
+                type: "GET",
+                url: this.rootPath + '/api/OffersApi/GetByDateType',
+                headers: this.requestToken(),
+                data: { value: val },
+                success: function (data) {
+
+                },
+                error: function (error) {
+
+                }
+            });
         }
 	};
 
@@ -5261,6 +5275,7 @@ APP.menu = (function () {
         console.log('APP.menu');
     	bindEventsToUI();
         $('body').on('handlebar-templates-loaded',setFavorites);
+        setOffers();
     };
 
     var bindEventsToUI = function(){
@@ -5323,6 +5338,29 @@ APP.menu = (function () {
             $('.submenu-login__main-container').toggle();
             $('.submenu-login__new-account').toggle();
         });
+
+        $('.submenu-offers ul.submenu-offers__parent-menu').on('click','li',function(){
+            APP.sliderRestaurants.changePopupContent( $(this).data('id') );    
+            $('.popup').show();
+            var isMobile = window.matchMedia("(max-width: 767px)").matches;
+            $('.slider-restaurants__popup').fadeIn('slow',function(){
+                if(isMobile){
+                    $('body').trigger('initMobileSlider');
+                }
+            });
+            $(this).parents('.submenu-level2').parent().siblings('span').click();//collapse the menu
+        });
+    };
+
+    var setOffers = function(){
+        var categories = APP.global.connectToAPI.getCategories(null);
+        var randomNumber = Math.floor((Math.random() * categories.length) + 1) - 1;
+        var randomCategory = categories[randomNumber].categoryId; //return a random category
+        var offersByCat = APP.global.connectToAPI.getOffersByCategory(randomCategory);
+        var maxIteration = offersByCat.length > 3 ? 3 : offersByCat.length;
+        for (var i = 0; i < maxIteration; i++) {
+            $('.submenu-offers ul.submenu-offers__parent-menu').append('<li data-id='+offersByCat[i].Id+'><span>'+offersByCat[i].Name+'</span></li>');
+        }
     };
 
     var setFavorites = function(){
@@ -5738,7 +5776,8 @@ APP.sliderRestaurants = (function () {
     };
 
     return {
-        init: init
+        init: init,
+        changePopupContent: changePopupContent
     };
 
 }());

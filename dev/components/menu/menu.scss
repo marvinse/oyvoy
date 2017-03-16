@@ -319,6 +319,10 @@
 			}
 		}
 		&--contact{
+			#map{
+				height: 310px;
+    			width: 300px;
+			}
 			>span{
 				background: url('../images/contact-icon.png');	
 				&.is-active{

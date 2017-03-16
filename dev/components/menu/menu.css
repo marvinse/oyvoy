@@ -240,6 +240,9 @@
       @media only screen and (min-width: 768px) {
         .menu__item--chat .submenu {
           top: -200px; } }
+    .menu__item--contact #map {
+      height: 310px;
+      width: 300px; }
     .menu__item--contact > span {
       background: url("../images/contact-icon.png"); }
       .menu__item--contact > span.is-active {
