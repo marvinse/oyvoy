@@ -276,18 +276,21 @@ APP.global = (function () {
             });
         },
         getOffersByDateType: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/OffersApi/GetByDateType',
                 headers: this.requestToken(),
                 data: { value: val },
                 success: function (data) {
-
+                    response = data;
                 },
                 error: function (error) {
 
                 }
             });
+            return response;
         }
 	};
 

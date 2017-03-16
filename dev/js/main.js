@@ -5238,18 +5238,21 @@ APP.global = (function () {
             });
         },
         getOffersByDateType: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/OffersApi/GetByDateType',
                 headers: this.requestToken(),
                 data: { value: val },
                 success: function (data) {
-
+                    response = data;
                 },
                 error: function (error) {
 
                 }
             });
+            return response;
         }
 	};
 
@@ -5505,7 +5508,6 @@ APP.sliderRestaurants = (function () {
     var init = function (element) {
     	console.log('APP.sliderRestaurants');
         $('body').on('handlebar-templates-loaded',setSliders);
-        
     };
 
     var setSliders = function(){
@@ -5523,21 +5525,34 @@ APP.sliderRestaurants = (function () {
         var categoriesContainers = $('.slider-restaurants.slider-restaurants--'+slider+' .slider-restaurants__container[data-category]');
         categoriesContainers.each(function(index, element){//append all images related with current category
             var self = $(this);
-            var slidersPerCategory = APP.global.connectToAPI.getOffersByCategory( self.data('category') );
+            var slidersPerCategory;
+            if( $('.slider-restaurants-by-day').length ){//if we are in the events by day page
+                slidersPerCategory = APP.global.connectToAPI.getOffersByDateType('Day');
+            }else if( $('.slider-restaurants-by-week').length ){
+                slidersPerCategory = APP.global.connectToAPI.getOffersByDateType('Week');
+            }else if( $('.slider-restaurants-by-month').length ){
+                slidersPerCategory = APP.global.connectToAPI.getOffersByDateType('Month');
+            }else{ //default option is all the offers
+                slidersPerCategory = APP.global.connectToAPI.getOffersByCategory( self.data('category') );
+            }
             if(slider=='mobile'){
                 $.each(slidersPerCategory,function(i,slider){
                     slider.Banner = slider.BannerMobile;
-                    var html = templateScript(slider);
-                    if(i%4 == 0){ //make a div each 4 elements
-                        self.append('<div class="each-4-elements"></div>');
+                    if(slider.CategoryId == self.data('category')){
+                        var html = templateScript(slider);
+                        if(i%4 == 0){ //make a div each 4 elements
+                            self.append('<div class="each-4-elements"></div>');
+                        }
+                        self.find('.each-4-elements').last().append(html)    
                     }
-                    self.find('.each-4-elements').last().append(html)
                 });
             }else{
                 $.each(slidersPerCategory,function(i,slider){
-                    slider.Banner = slider.BannerDesktop;
-                    var html = templateScript(slider);
-                    self.append(html);
+                    if(slider.CategoryId == self.data('category')){
+                        slider.Banner = slider.BannerDesktop;
+                        var html = templateScript(slider);
+                        self.append(html);
+                    }  
                 });
             }
         });
