@@ -1,16 +1,14 @@
 <script id="handlebars-favorites" type="text/x-handlebars-template">
-	{{#each this}}
-		<li>
-			<a href="#" class="submenu-favorites__delete"><img src="images/trashcan.png" /></a>
-			<div class="submenu-favorites__confirmation">
-				<a class="submenu-favorites__confirmation__no" href="#">No</a>
-				<a class="submenu-favorites__confirmation__yes" href="#">Si</a>
-				<h3>Eliminar de favoritos?</h3>
-			</div>
-			<img src="images/examples/eventos-placeholder-image-3.png">
-			<span class="submenu-favorites__event">{{OfferId}}</span>
-		</li>
-	{{/each}}
+	<li>
+		<a href="#" class="submenu-favorites__delete"><img src="images/trashcan.png" /></a>
+		<div class="submenu-favorites__confirmation">
+			<a class="submenu-favorites__confirmation__no" href="#">No</a>
+			<a data-id="{{Id}}" class="submenu-favorites__confirmation__yes" href="#">Si</a>
+			<h3>Eliminar de favoritos?</h3>
+		</div>
+		<img src="images/examples/eventos-placeholder-image-3.png">
+		<span class="submenu-favorites__event">{{OfferName}}</span>
+	</li>
 </script>
 <script id="handlebars-slider-restaurants" type="text/x-handlebars-template">
 	<div class="slider-restaurants slider-restaurants--{{type}}">

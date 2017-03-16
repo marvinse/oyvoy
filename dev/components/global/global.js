@@ -50,6 +50,20 @@ APP.global = (function () {
                 }
             });
     	},
+        logout: function() {
+            $.ajax({
+                type: "POST",
+                url: this.rootPath + '/api/Account/Logout',
+                headers: this.requestToken(),
+                success: function (data) {
+                    sessionStorage.removeItem('userName');
+                    sessionStorage.removeItem('accessToken');
+                    sessionStorage.removeItem('refreshToken');
+                },
+                error: function (error) {
+                }
+            });
+        },
     	getOffers: function(val) {
             var response;
             $.ajax({

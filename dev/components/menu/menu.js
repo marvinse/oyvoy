@@ -4,7 +4,7 @@ var APP = window.APP = window.APP || {};
 
 APP.menu = (function () {
 
-    var userIsLogged = true;
+    var userIsLogged = sessionStorage.getItem('userName')==null?false:true;
     var favoritesByUserExample = [{"Id":5,"UserId":2,"OfferId":8},{"Id":6,"UserId":2,"OfferId":9}]
     
     var init = function (element) {
@@ -60,6 +60,7 @@ APP.menu = (function () {
         $('.menu').on('click','.menu__item--hamburger .submenu-favorites__confirmation__yes',function(e){
             e.preventDefault();
             $(this).closest('li').remove();
+            APP.global.connectToAPI.deleteByFavId( $(this).data('id') );
         });
 
         $('.menu__item--hamburger .submenu-today .submenu-today__parent-menu span').click(function(){
@@ -103,8 +104,11 @@ APP.menu = (function () {
         if(userIsLogged){
             var favoriteHTMLTemplate = $('#handlebars-favorites').html();
             var templateScript = Handlebars.compile(favoriteHTMLTemplate);
-            var html = templateScript(favoritesByUserExample);
-            $('.menu .submenu-favorites ul').append(html);
+            $.each(favoritesByUserExample,function(i,favorite){
+                favorite.OfferName = APP.global.connectToAPI.getOffers(favorite.OfferId)[0].Name;
+                var html = templateScript(favorite);
+                $('.menu .submenu-favorites ul').append(html);
+            });
         }else{
             $('.menu li[data-submenu=submenu-favorites]').remove();
         }
