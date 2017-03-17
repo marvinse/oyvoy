@@ -136,14 +136,16 @@ APP.global = (function () {
                 }
             });
         },
-		deleteByFavId: function(pFavId) {
+        deleteByFavId: function(pFavId) {
             $.ajax({
-                type: "Delete",
+                type: "POST",
                 url: this.rootPath + '/api/FavoritesApi/DeleteById/' + pFavId,
                 headers: this.requestToken(),
                 success: function (data) {
+
                 },
                 error: function (error) {
+
                 }
             });
         },
@@ -305,6 +307,26 @@ APP.global = (function () {
                 }
             });
             return response;
+        },
+        sendEmail: function(pUserName, pSub, pBody) {
+            var EmailModel = new Object();
+            EmailModel.UserName = pUserName;
+            EmailModel.Subject = pSub;
+            EmailModel.Body = pBody;
+
+            $.ajax({
+                url: this.rootPath + '/api/UtilitiesApi/SendEmail',
+                type: 'POST',
+                dataType: 'json',
+                data: EmailModel,
+                headers: this.requestToken(),
+                success: function (data, textStatus, xhr) {
+                    alert('Message sent');
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error in Operation');
+                }
+            });
         }
 	};
 

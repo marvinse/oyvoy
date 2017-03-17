@@ -5098,14 +5098,16 @@ APP.global = (function () {
                 }
             });
         },
-		deleteByFavId: function(pFavId) {
+        deleteByFavId: function(pFavId) {
             $.ajax({
-                type: "Delete",
+                type: "POST",
                 url: this.rootPath + '/api/FavoritesApi/DeleteById/' + pFavId,
                 headers: this.requestToken(),
                 success: function (data) {
+
                 },
                 error: function (error) {
+
                 }
             });
         },
@@ -5267,6 +5269,26 @@ APP.global = (function () {
                 }
             });
             return response;
+        },
+        sendEmail: function(pUserName, pSub, pBody) {
+            var EmailModel = new Object();
+            EmailModel.UserName = pUserName;
+            EmailModel.Subject = pSub;
+            EmailModel.Body = pBody;
+
+            $.ajax({
+                url: this.rootPath + '/api/UtilitiesApi/SendEmail',
+                type: 'POST',
+                dataType: 'json',
+                data: EmailModel,
+                headers: this.requestToken(),
+                success: function (data, textStatus, xhr) {
+                    alert('Message sent');
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error in Operation');
+                }
+            });
         }
 	};
 
@@ -5293,6 +5315,7 @@ APP.menu = (function () {
     	bindEventsToUI();
         $('body').on('handlebar-templates-loaded',setFavorites);
         setOffers();
+        setWhatWeHaveForToday();
     };
 
     var bindEventsToUI = function(){
@@ -5344,7 +5367,7 @@ APP.menu = (function () {
             APP.global.connectToAPI.deleteByFavId( $(this).data('id') );
         });
 
-        $('.menu__item--hamburger .submenu-today .submenu-today__parent-menu span').click(function(){
+        $('.menu').on('click','.submenu-today .submenu-today__parent-menu span',function(){
             $(this).parent().find('>ul').toggle();
             if($(this).parent().find('>ul').length > 0){
                 $(this).toggleClass('is-active');
@@ -5357,16 +5380,33 @@ APP.menu = (function () {
             $('.submenu-login__new-account').toggle();
         });
 
-        $('.submenu-offers ul.submenu-offers__parent-menu').on('click','li',function(){
-            APP.sliderRestaurants.changePopupContent( $(this).data('id') );    
-            $('.popup').show();
-            var isMobile = window.matchMedia("(max-width: 767px)").matches;
-            $('.slider-restaurants__popup').fadeIn('slow',function(){
-                if(isMobile){
-                    $('body').trigger('initMobileSlider');
-                }
-            });
+        $('.submenu-today .submenu-today__parent-menu').on('click','li > ul > li',function(){
+            changePopupContent($(this).data('id'));
             $(this).parents('.submenu-level2').parent().siblings('span').click();//collapse the menu
+        });
+
+        $('.submenu-offers ul.submenu-offers__parent-menu').on('click','li',function(){
+            changePopupContent($(this).data('id'));
+            $(this).parents('.submenu-level2').parent().siblings('span').click();//collapse the menu
+        });
+
+        $('#sendComments .send').click(function(e){
+            e.preventDefault();
+            var name = $('#sendComments .name').val();
+            var email = $('#sendComments .email').val();
+            var body = $('#sendComments .comments').val();
+            APP.global.connectToAPI.sendEmail(name,'Mensaje recibido de '+email,body);
+        });
+    };
+
+    var changePopupContent = function(id){
+        APP.sliderRestaurants.changePopupContent(id);    
+        $('.popup').show();
+        var isMobile = window.matchMedia("(max-width: 767px)").matches;
+        $('.slider-restaurants__popup').fadeIn('slow',function(){
+            if(isMobile){
+                $('body').trigger('initMobileSlider');
+            }
         });
     };
 
@@ -5379,6 +5419,20 @@ APP.menu = (function () {
         for (var i = 0; i < maxIteration; i++) {
             $('.submenu-offers ul.submenu-offers__parent-menu').append('<li data-id='+offersByCat[i].Id+'><span>'+offersByCat[i].Name+'</span></li>');
         }
+    };
+
+    var setWhatWeHaveForToday = function(){
+        var offersPerDay = APP.global.connectToAPI.getOffersByDateType('Day');
+        var catArray = [];
+        $.each(offersPerDay,function(i,offer){
+            if( $.inArray(offer.CategoryId, catArray) == -1 ){ //categoryId doesn't exist in array
+                catArray.push(offer.CategoryId);//push catId in array
+                $('.submenu-today > ul').append('<li data-catId='+offer.CategoryId+'><span>'+offer.CatName+'</span><ul></ul></li>');
+                $('.submenu-today > ul li[data-catId='+offer.CategoryId+'] ul').append('<li data-id='+offer.Id+'><span>'+offer.Name+'</span></li>');
+            }else{//category already exist
+                $('.submenu-today > ul li[data-catId='+offer.CategoryId+'] ul').append('<li data-id='+offer.Id+'><span>'+offer.Name+'</span></li>');
+            }
+        });
     };
 
     var setFavorites = function(){
@@ -5698,7 +5752,7 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__share').click(function(){
             FB.ui({
               method: 'share',
-              href: 'http://www.example.com/',
+              href: 'http://www.oyvoy.com/',
             }, function(response){});
         });
 

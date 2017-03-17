@@ -182,7 +182,7 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__share').click(function(){
             FB.ui({
               method: 'share',
-              href: 'http://www.example.com/',
+              href: 'http://www.oyvoy.com/',
             }, function(response){});
         });
 
