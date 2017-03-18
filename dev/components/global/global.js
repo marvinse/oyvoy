@@ -193,12 +193,14 @@ APP.global = (function () {
             });
             return response;
         },
-        postReview: function(pOfferVal, pUserVal, pRate, pMessage) {
+        postReview: function(pOfferVal, pUserVal, pRate, pMessage, pTitle) {
             var ReviewsModel = new Object();
             ReviewsModel.OfferId = pOfferVal;
             ReviewsModel.UserId = pUserVal;
             ReviewsModel.Rate = pRate;
             ReviewsModel.Message = pMessage;
+            ReviewsModel.Title = pTitle;
+
             $.ajax({
                 url: this.rootPath + '/api/ReviewsApi/PostReview',
                 type: 'POST',
@@ -206,8 +208,10 @@ APP.global = (function () {
                 data: ReviewsModel,
                 headers: this.requestToken(),
                 success: function (data, textStatus, xhr) {
+                    alert('Gracias por tu comentario');
                 },
                 error: function (xhr, textStatus, errorThrown) {
+                    alert('Ha ocurrido un error, intente de nuevo');
                 }
             });
         },

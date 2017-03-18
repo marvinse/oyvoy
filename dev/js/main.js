@@ -5155,12 +5155,14 @@ APP.global = (function () {
             });
             return response;
         },
-        postReview: function(pOfferVal, pUserVal, pRate, pMessage) {
+        postReview: function(pOfferVal, pUserVal, pRate, pMessage, pTitle) {
             var ReviewsModel = new Object();
             ReviewsModel.OfferId = pOfferVal;
             ReviewsModel.UserId = pUserVal;
             ReviewsModel.Rate = pRate;
             ReviewsModel.Message = pMessage;
+            ReviewsModel.Title = pTitle;
+
             $.ajax({
                 url: this.rootPath + '/api/ReviewsApi/PostReview',
                 type: 'POST',
@@ -5168,8 +5170,10 @@ APP.global = (function () {
                 data: ReviewsModel,
                 headers: this.requestToken(),
                 success: function (data, textStatus, xhr) {
+                    alert('Gracias por tu comentario');
                 },
                 error: function (xhr, textStatus, errorThrown) {
+                    alert('Ha ocurrido un error, intente de nuevo');
                 }
             });
         },
@@ -5675,6 +5679,9 @@ APP.sliderRestaurants = (function () {
                 }
             });
         }
+        if(!sessionStorage.getItem('userName')){ //userIsNotLogged
+            $('.create-review').remove();
+        }
         var offer = APP.global.connectToAPI.getOffers(offerId);
         $('.slider-restaurants__popup').attr('data-id',offerId);
         $('.slider-restaurants__popup__header__main-image h1').html(offer[0].Name);
@@ -5765,6 +5772,19 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup__new-review__qualification img').on('mouseover click',function(){
             $(this).parent().removeClass('slider-restaurants__popup__new-review__qualification--1 slider-restaurants__popup__new-review__qualification--2 slider-restaurants__popup__new-review__qualification--3 slider-restaurants__popup__new-review__qualification--4 slider-restaurants__popup__new-review__qualification--5');
             $(this).parent().addClass($(this).data('class'));
+            $(this).parent().addClass($(this).data('class'));
+            $(this).parent().attr('data-activerate',$(this).data('rate'));
+        });
+
+        //aqui
+        $('.slider-restaurants__popup__new-review__container #post-review').click(function(e){
+            e.preventDefault();
+            var offerId = $('.slider-restaurants__popup').data('id');
+            var userId = sessionStorage.getItem('userId');
+            var rate = $('.slider-restaurants__popup__new-review__qualification').data('activerate');
+            var message = $('.slider-restaurants__popup__new-review__container .new-comment').val();
+            var title = $('.slider-restaurants__popup__new-review__container .title').val();
+            APP.global.connectToAPI.postReview(offerId,userId,rate,message,title);
         });
 
         $('.slider-restaurants__popup .slider-restaurants__add-to-favorites').click(function(e){

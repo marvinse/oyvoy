@@ -103,17 +103,16 @@
 		<h2>Nueva reseña</h2>
 		<img class="slider-restaurants__popup__popup-red__close" src="images/close-card-gray-button.png" />
 		<form action="">
-			<input type="text" placeholder="Su nombre">
-			<input type="text" placeholder="Titulo">
-			<textarea name="" placeholder="Comentarios" cols="30" rows="10"></textarea>
-			<div class="slider-restaurants__popup__new-review__qualification">
-				<img data-class="slider-restaurants__popup__new-review__qualification--1" src="images/empty-star.png" />
-				<img data-class="slider-restaurants__popup__new-review__qualification--2" src="images/empty-star.png" />
-				<img data-class="slider-restaurants__popup__new-review__qualification--3" src="images/empty-star.png" />
-				<img data-class="slider-restaurants__popup__new-review__qualification--4" src="images/empty-star.png" />
-				<img data-class="slider-restaurants__popup__new-review__qualification--5" src="images/empty-star.png" />
+			<input type="text" class="title" placeholder="Titulo">
+			<textarea class="new-comment" name="" placeholder="Comentarios" cols="30" rows="10"></textarea>
+			<div class="slider-restaurants__popup__new-review__qualification" data-activerate='0'>
+				<img data-rate="1" data-class="slider-restaurants__popup__new-review__qualification--1" src="images/empty-star.png" />
+				<img data-rate="2" data-class="slider-restaurants__popup__new-review__qualification--2" src="images/empty-star.png" />
+				<img data-rate="3" data-class="slider-restaurants__popup__new-review__qualification--3" src="images/empty-star.png" />
+				<img data-rate="4" data-class="slider-restaurants__popup__new-review__qualification--4" src="images/empty-star.png" />
+				<img data-rate="5" data-class="slider-restaurants__popup__new-review__qualification--5" src="images/empty-star.png" />
 			</div>
-			<a href="#">Publicar</a>
+			<a id="post-review" href="#">Publicar</a>
 		</form>
 	</div>
 </div>
