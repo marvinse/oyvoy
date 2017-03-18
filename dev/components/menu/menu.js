@@ -5,7 +5,6 @@ var APP = window.APP = window.APP || {};
 APP.menu = (function () {
 
     var userIsLogged = sessionStorage.getItem('userName')==null?false:true;
-    var favoritesByUserExample = [{"Id":5,"UserId":2,"OfferId":8},{"Id":6,"UserId":2,"OfferId":9}]
     
     var init = function (element) {
         console.log('APP.menu');
@@ -134,9 +133,10 @@ APP.menu = (function () {
 
     var setFavorites = function(){
         if(userIsLogged){
+            var favoritesByUser = window.favoritesByUser = APP.global.connectToAPI.getFavoritesByUser(sessionStorage.getItem('userId'));
             var favoriteHTMLTemplate = $('#handlebars-favorites').html();
             var templateScript = Handlebars.compile(favoriteHTMLTemplate);
-            $.each(favoritesByUserExample,function(i,favorite){
+            $.each(favoritesByUser,function(i,favorite){
                 favorite.OfferName = APP.global.connectToAPI.getOffers(favorite.OfferId)[0].Name;
                 var html = templateScript(favorite);
                 $('.menu .submenu-favorites ul').append(html);

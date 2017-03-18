@@ -15,7 +15,7 @@ APP.global = (function () {
 	};
 
 	var connectToAPI = {
-		rootPath: 'http://www.oyvoy.com/webapi',
+		rootPath: 'http://' + window.location.hostname+'/webapi',
         userRegistrationInfo : {
             Email: 'admin@offershore.com',
             Password: 'Pass0123&',
@@ -43,6 +43,7 @@ APP.global = (function () {
                 data: this.userLogin,
                 success: function (data) {
                     sessionStorage.setItem('userName', data.userName);
+                    sessionStorage.setItem('userId',APP.global.connectToAPI.getUserByUserName(data.userName).Id);
                     sessionStorage.setItem('accessToken', data.access_token);
                     sessionStorage.setItem('refreshToken', data.refresh_token);
                 },
@@ -57,6 +58,7 @@ APP.global = (function () {
                 headers: this.requestToken(),
                 success: function (data) {
                     sessionStorage.removeItem('userName');
+                    sessionStorage.removeItem('userId');
                     sessionStorage.removeItem('accessToken');
                     sessionStorage.removeItem('refreshToken');
                 },
@@ -110,15 +112,19 @@ APP.global = (function () {
             });
         },
 		getFavoritesByUser: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/FavoritesApi/GetByuser/' + val,
                 headers: this.requestToken(),
                 success: function (data) {
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
 		postFavorite: function(pOfferVal, pUserVal) {
             var FavoritesModel = new Object();
@@ -141,6 +147,7 @@ APP.global = (function () {
                 type: "POST",
                 url: this.rootPath + '/api/FavoritesApi/DeleteById/' + pFavId,
                 headers: this.requestToken(),
+                dataType: 'json',
                 success: function (data) {
 
                 },
@@ -327,6 +334,22 @@ APP.global = (function () {
                     alert('Error in Operation');
                 }
             });
+        },
+        getUserByUserName: function(val) {
+            var response;
+            $.ajax({
+                type: "GET",
+                async: false,
+                url: this.rootPath + '/api/UserApi/GetByuserName/',
+                headers: this.requestToken(),
+                data: { value: val },
+                success: function (data) {
+                    response = data;
+                },
+                error: function (error) {
+                }
+            });
+            return response;
         }
 	};
 

@@ -4977,7 +4977,7 @@ APP.global = (function () {
 	};
 
 	var connectToAPI = {
-		rootPath: 'http://www.oyvoy.com/webapi',
+		rootPath: 'http://' + window.location.hostname+'/webapi',
         userRegistrationInfo : {
             Email: 'admin@offershore.com',
             Password: 'Pass0123&',
@@ -5005,6 +5005,7 @@ APP.global = (function () {
                 data: this.userLogin,
                 success: function (data) {
                     sessionStorage.setItem('userName', data.userName);
+                    sessionStorage.setItem('userId',APP.global.connectToAPI.getUserByUserName(data.userName).Id);
                     sessionStorage.setItem('accessToken', data.access_token);
                     sessionStorage.setItem('refreshToken', data.refresh_token);
                 },
@@ -5019,6 +5020,7 @@ APP.global = (function () {
                 headers: this.requestToken(),
                 success: function (data) {
                     sessionStorage.removeItem('userName');
+                    sessionStorage.removeItem('userId');
                     sessionStorage.removeItem('accessToken');
                     sessionStorage.removeItem('refreshToken');
                 },
@@ -5072,15 +5074,19 @@ APP.global = (function () {
             });
         },
 		getFavoritesByUser: function(val) {
+            var response;
             $.ajax({
                 type: "GET",
+                async: false,
                 url: this.rootPath + '/api/FavoritesApi/GetByuser/' + val,
                 headers: this.requestToken(),
                 success: function (data) {
+                    response = data;
                 },
                 error: function (error) {
                 }
             });
+            return response;
         },
 		postFavorite: function(pOfferVal, pUserVal) {
             var FavoritesModel = new Object();
@@ -5103,6 +5109,7 @@ APP.global = (function () {
                 type: "POST",
                 url: this.rootPath + '/api/FavoritesApi/DeleteById/' + pFavId,
                 headers: this.requestToken(),
+                dataType: 'json',
                 success: function (data) {
 
                 },
@@ -5289,6 +5296,22 @@ APP.global = (function () {
                     alert('Error in Operation');
                 }
             });
+        },
+        getUserByUserName: function(val) {
+            var response;
+            $.ajax({
+                type: "GET",
+                async: false,
+                url: this.rootPath + '/api/UserApi/GetByuserName/',
+                headers: this.requestToken(),
+                data: { value: val },
+                success: function (data) {
+                    response = data;
+                },
+                error: function (error) {
+                }
+            });
+            return response;
         }
 	};
 
@@ -5308,7 +5331,6 @@ var APP = window.APP = window.APP || {};
 APP.menu = (function () {
 
     var userIsLogged = sessionStorage.getItem('userName')==null?false:true;
-    var favoritesByUserExample = [{"Id":5,"UserId":2,"OfferId":8},{"Id":6,"UserId":2,"OfferId":9}]
     
     var init = function (element) {
         console.log('APP.menu');
@@ -5437,9 +5459,10 @@ APP.menu = (function () {
 
     var setFavorites = function(){
         if(userIsLogged){
+            var favoritesByUser = window.favoritesByUser = APP.global.connectToAPI.getFavoritesByUser(sessionStorage.getItem('userId'));
             var favoriteHTMLTemplate = $('#handlebars-favorites').html();
             var templateScript = Handlebars.compile(favoriteHTMLTemplate);
-            $.each(favoritesByUserExample,function(i,favorite){
+            $.each(favoritesByUser,function(i,favorite){
                 favorite.OfferName = APP.global.connectToAPI.getOffers(favorite.OfferId)[0].Name;
                 var html = templateScript(favorite);
                 $('.menu .submenu-favorites ul').append(html);
@@ -5643,7 +5666,17 @@ APP.sliderRestaurants = (function () {
     };
 
     var changePopupContent = function(offerId){
+        if(window.favoritesByUser.length > 0){
+            $.each(window.favoritesByUser,function(i,favorite){
+                if(favorite.OfferId == offerId){ //user have this offer as favorite
+                    $('.slider-restaurants__popup .slider-restaurants__add-to-favorites').addClass('slider-restaurants__add-to-favorites--on');
+                    $('.slider-restaurants__popup').attr('data-fav-id',favorite.Id);
+                    return false;
+                }
+            });
+        }
         var offer = APP.global.connectToAPI.getOffers(offerId);
+        $('.slider-restaurants__popup').attr('data-id',offerId);
         $('.slider-restaurants__popup__header__main-image h1').html(offer[0].Name);
         $('.slider-restaurants__popup__general-info-description').html(offer[0].Description);
         $('.slider-restaurants__popup__score img').attr('src','images/'+offer[0].Rating+'-stars.png');
@@ -5738,13 +5771,15 @@ APP.sliderRestaurants = (function () {
             e.preventDefault();
             var self = $(this);
             $(this).toggleClass('slider-restaurants__add-to-favorites--on');
-            if( $(this).hasClass('slider-restaurants__add-to-favorites--on') ){
+            if( $(this).hasClass('slider-restaurants__add-to-favorites--on') ){//added to favorites
                 $(this).find('img.added').fadeIn('1000',function(){
-                    $(this).delay(2000).fadeOut('1000'); 
+                    $(this).delay(2000).fadeOut('1000');
+                    APP.global.connectToAPI.postFavorite( $('.slider-restaurants__popup').data('id'),sessionStorage.getItem('userId') );
                 });
-            }else{
+            }else{//removed from favorites
                 $(this).find('img.removed').fadeIn('1000',function(){
-                    $(this).delay(2000).fadeOut('1000'); 
+                    $(this).delay(2000).fadeOut('1000');
+                    APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
                 });
             }
         });
