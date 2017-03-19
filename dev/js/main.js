@@ -5416,6 +5416,19 @@ APP.menu = (function () {
             $(this).parents('.submenu-level2').parent().siblings('span').click();//collapse the menu
         });
 
+        $('#filter input').keyup(function(){
+            var filterText = $(this).val().toLowerCase();
+            var listElements = $('.submenu-today > ul > li');
+            $.each(listElements,function(i,element){
+                var elementText = $(element).find('>span').html().toLowerCase();
+                if(elementText.indexOf(filterText) > -1){
+                    $(element).show();
+                }else{
+                    $(element).hide();
+                }
+            });
+        });
+
         $('#sendComments .send').click(function(e){
             e.preventDefault();
             var name = $('#sendComments .name').val();
@@ -5776,7 +5789,6 @@ APP.sliderRestaurants = (function () {
             $(this).parent().attr('data-activerate',$(this).data('rate'));
         });
 
-        //aqui
         $('.slider-restaurants__popup__new-review__container #post-review').click(function(e){
             e.preventDefault();
             var offerId = $('.slider-restaurants__popup').data('id');

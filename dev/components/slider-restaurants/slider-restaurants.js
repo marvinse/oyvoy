@@ -179,7 +179,6 @@ APP.sliderRestaurants = (function () {
             $(this).parent().attr('data-activerate',$(this).data('rate'));
         });
 
-        //aqui
         $('.slider-restaurants__popup__new-review__container #post-review').click(function(e){
             e.preventDefault();
             var offerId = $('.slider-restaurants__popup').data('id');
