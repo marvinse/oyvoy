@@ -4,7 +4,8 @@ var APP = window.APP = window.APP || {};
 
 APP.menu = (function () {
 
-    var userIsLogged = sessionStorage.getItem('userName')==null?false:true;
+    //4 is the default user without login
+    var userIsLogged = sessionStorage.getItem('userRole')==4?false:true;
     
     var init = function (element) {
         console.log('APP.menu');
@@ -106,6 +107,35 @@ APP.menu = (function () {
             var body = $('#sendComments .comments').val();
             APP.global.connectToAPI.sendEmail(name,'Mensaje recibido de '+email,body);
         });
+
+        $('#register').validate({
+            rules:{
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                'confirm-password': {
+                    required: true,
+                    equalTo: '#password'
+                }
+            }
+        });
+
+        $('#register').submit(function(e){
+            e.preventDefault();
+            if( $(this).valid() ){
+                var userRegistrationInfo = {
+                    Email: $('#register input[name="email"]').val(),
+                    Password: $('#register input[name="password"]').val(),
+                    ConfirmPassword: $('#register input[name="confirm-password"]').val()
+                };
+                APP.global.connectToAPI.register(userRegistrationInfo);
+            }
+        });
     };
 
     var changePopupContent = function(id){
@@ -145,6 +175,7 @@ APP.menu = (function () {
     };
 
     var setFavorites = function(){
+        window.favoritesByUser = [];
         if(userIsLogged){
             var favoritesByUser = window.favoritesByUser = APP.global.connectToAPI.getFavoritesByUser(sessionStorage.getItem('userId'));
             var favoriteHTMLTemplate = $('#handlebars-favorites').html();

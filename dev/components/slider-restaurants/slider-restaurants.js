@@ -82,7 +82,7 @@ APP.sliderRestaurants = (function () {
                 }
             });
         }
-        if(!sessionStorage.getItem('userName')){ //userIsNotLogged
+        if(sessionStorage.getItem('userRole')==4){ //userIsNotLogged
             $('.create-review').remove();
         }
         var offer = APP.global.connectToAPI.getOffers(offerId);

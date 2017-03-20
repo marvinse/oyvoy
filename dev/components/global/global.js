@@ -23,8 +23,8 @@ APP.global = (function () {
         },
         userLogin: {
             grant_type: 'password',
-            username: '99a9abe5-c29c-407a-bbff-6c4dc470f6f1',
-            password: '2~>%-ePM',
+            username: '00216445-5bf0-4ac5-9be2-402c76f861ee',
+            password: '2017Offerstore&',
             scope: "useClientId"
         },
         requestToken: function(){
@@ -43,7 +43,7 @@ APP.global = (function () {
                 data: this.userLogin,
                 success: function (data) {
                     sessionStorage.setItem('userName', data.userName);
-                    sessionStorage.setItem('userId',APP.global.connectToAPI.getUserByUserName(data.userName).Id);
+                    sessionStorage.setItem('userRole',APP.global.connectToAPI.getUserByUserName(data.userName).RoleId);
                     sessionStorage.setItem('accessToken', data.access_token);
                     sessionStorage.setItem('refreshToken', data.refresh_token);
                 },
@@ -63,6 +63,19 @@ APP.global = (function () {
                     sessionStorage.removeItem('refreshToken');
                 },
                 error: function (error) {
+                }
+            });
+        },
+        register: function(registerInfo) {
+            $.ajax({
+                type: "POST",
+                url: this.rootPath + '/api/Account/Register',
+                data: registerInfo,
+                success: function (data) {
+                    alert('Usuario registrado con exito');
+                },
+                error: function (error) {
+                    alert('Hubo un error, intente con un password más fuerte');
                 }
             });
         },

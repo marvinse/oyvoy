@@ -198,6 +198,9 @@
 							}
 							.submenu-login__new-account{
 								display: none;
+								.error{
+									color: red;
+								}
 							}
 						}
 						&.submenu-about{

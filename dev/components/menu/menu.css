@@ -160,6 +160,8 @@
           text-transform: uppercase; }
         .menu__item--hamburger .submenu-level2 > li.submenu-login .submenu-login__new-account {
           display: none; }
+          .menu__item--hamburger .submenu-level2 > li.submenu-login .submenu-login__new-account .error {
+            color: red; }
         .menu__item--hamburger .submenu-level2 > li.submenu-about h3 {
           border-bottom: 1px solid #585858;
           padding-bottom: 10px; }
