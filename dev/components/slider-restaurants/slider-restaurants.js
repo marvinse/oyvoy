@@ -82,7 +82,7 @@ APP.sliderRestaurants = (function () {
                 }
             });
         }
-        if(sessionStorage.getItem('userRole')==4){ //userIsNotLogged
+        if(sessionStorage.getItem('userId')==null){ //userIsNotLogged
             $('.create-review').remove();
         }
         var offer = APP.global.connectToAPI.getOffers(offerId);
@@ -192,17 +192,19 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup .slider-restaurants__add-to-favorites').click(function(e){
             e.preventDefault();
             var self = $(this);
-            $(this).toggleClass('slider-restaurants__add-to-favorites--on');
-            if( $(this).hasClass('slider-restaurants__add-to-favorites--on') ){//added to favorites
-                $(this).find('img.added').fadeIn('1000',function(){
-                    $(this).delay(2000).fadeOut('1000');
-                    APP.global.connectToAPI.postFavorite( $('.slider-restaurants__popup').data('id'),sessionStorage.getItem('userId') );
-                });
-            }else{//removed from favorites
-                $(this).find('img.removed').fadeIn('1000',function(){
-                    $(this).delay(2000).fadeOut('1000');
-                    APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
-                });
+            if(sessionStorage.getItem('userId')!=null){ //userIsLogged
+                self.toggleClass('slider-restaurants__add-to-favorites--on');
+                if( self.hasClass('slider-restaurants__add-to-favorites--on') ){//added to favorites
+                    self.find('img.added').fadeIn('1000',function(){
+                        self.delay(2000).fadeOut('1000');
+                        APP.global.connectToAPI.postFavorite( $('.slider-restaurants__popup').data('id'),sessionStorage.getItem('userId') );
+                    });
+                }else{//removed from favorites
+                    self.find('img.removed').fadeIn('1000',function(){
+                        $(this).delay(2000).fadeOut('1000');
+                        APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
+                    });
+                }
             }
         });
 

@@ -4977,16 +4977,11 @@ APP.global = (function () {
 		}).done(function(){
 			$('body').trigger('handlebar-templates-loaded');
 		});
-		connectToAPI.login();
+		connectToAPI.appLogin();
 	};
 
 	var connectToAPI = {
 		rootPath: 'http://' + window.location.hostname+'/webapi',
-        userRegistrationInfo : {
-            Email: 'admin@offershore.com',
-            Password: 'Pass0123&',
-            ConfirmPassword: 'Pass0123&'
-        },
         userLogin: {
             grant_type: 'password',
             username: '00216445-5bf0-4ac5-9be2-402c76f861ee',
@@ -5001,22 +4996,38 @@ APP.global = (function () {
             }
             return authHeaders;
         },
-		login: function() {
+		appLogin: function() {
 	        $.ajax({
                 type: "POST",
                 url: this.rootPath + '/TOKEN',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: this.userLogin,
                 success: function (data) {
-                    sessionStorage.setItem('userName', data.userName);
                     sessionStorage.setItem('userRole',APP.global.connectToAPI.getUserByUserName(data.userName).RoleId);
                     sessionStorage.setItem('accessToken', data.access_token);
-                    sessionStorage.setItem('refreshToken', data.refresh_token);
                 },
                 error: function (error) {
+                    
                 }
             });
     	},
+        login: function(user){
+            $.ajax({
+                type: "POST",
+                url: this.rootPath + '/TOKEN',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: user,
+                success: function (data) {
+                    sessionStorage.setItem('userName', data.userName);
+                    sessionStorage.setItem('userId',APP.global.connectToAPI.getUserByUserName(data.userName).Id);
+                    alert('Usuario logueado, redirigiendo...');
+                    location.reload();
+                },
+                error: function (error) {
+                    alert( $.parseJSON(error.responseText).error_description );
+                }
+            });
+        },
         logout: function() {
             $.ajax({
                 type: "POST",
@@ -5351,8 +5362,8 @@ var APP = window.APP = window.APP || {};
 
 APP.menu = (function () {
 
-    //4 is the default user without login
-    var userIsLogged = sessionStorage.getItem('userRole')==4?false:true;
+    //userId is setted just when a user is logged
+    var userIsLogged = sessionStorage.getItem('userId')==null?false:true;
     
     var init = function (element) {
         console.log('APP.menu');
@@ -5482,6 +5493,16 @@ APP.menu = (function () {
                 };
                 APP.global.connectToAPI.register(userRegistrationInfo);
             }
+        });
+
+        $('#login').submit(function(e){
+            e.preventDefault();
+            var user = {
+                grant_type: 'password',
+                username: $('#login input[name="email"]').val(),
+                password: $('#login input[name="password"]').val()
+            };
+            APP.global.connectToAPI.login(user);
         });
     };
 
@@ -5740,7 +5761,7 @@ APP.sliderRestaurants = (function () {
                 }
             });
         }
-        if(sessionStorage.getItem('userRole')==4){ //userIsNotLogged
+        if(sessionStorage.getItem('userId')==null){ //userIsNotLogged
             $('.create-review').remove();
         }
         var offer = APP.global.connectToAPI.getOffers(offerId);
@@ -5850,17 +5871,19 @@ APP.sliderRestaurants = (function () {
         $('.slider-restaurants__popup .slider-restaurants__add-to-favorites').click(function(e){
             e.preventDefault();
             var self = $(this);
-            $(this).toggleClass('slider-restaurants__add-to-favorites--on');
-            if( $(this).hasClass('slider-restaurants__add-to-favorites--on') ){//added to favorites
-                $(this).find('img.added').fadeIn('1000',function(){
-                    $(this).delay(2000).fadeOut('1000');
-                    APP.global.connectToAPI.postFavorite( $('.slider-restaurants__popup').data('id'),sessionStorage.getItem('userId') );
-                });
-            }else{//removed from favorites
-                $(this).find('img.removed').fadeIn('1000',function(){
-                    $(this).delay(2000).fadeOut('1000');
-                    APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
-                });
+            if(sessionStorage.getItem('userId')!=null){ //userIsLogged
+                self.toggleClass('slider-restaurants__add-to-favorites--on');
+                if( self.hasClass('slider-restaurants__add-to-favorites--on') ){//added to favorites
+                    self.find('img.added').fadeIn('1000',function(){
+                        self.delay(2000).fadeOut('1000');
+                        APP.global.connectToAPI.postFavorite( $('.slider-restaurants__popup').data('id'),sessionStorage.getItem('userId') );
+                    });
+                }else{//removed from favorites
+                    self.find('img.removed').fadeIn('1000',function(){
+                        $(this).delay(2000).fadeOut('1000');
+                        APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
+                    });
+                }
             }
         });
 

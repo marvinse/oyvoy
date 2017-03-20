@@ -4,8 +4,8 @@ var APP = window.APP = window.APP || {};
 
 APP.menu = (function () {
 
-    //4 is the default user without login
-    var userIsLogged = sessionStorage.getItem('userRole')==4?false:true;
+    //userId is setted just when a user is logged
+    var userIsLogged = sessionStorage.getItem('userId')==null?false:true;
     
     var init = function (element) {
         console.log('APP.menu');
@@ -135,6 +135,16 @@ APP.menu = (function () {
                 };
                 APP.global.connectToAPI.register(userRegistrationInfo);
             }
+        });
+
+        $('#login').submit(function(e){
+            e.preventDefault();
+            var user = {
+                grant_type: 'password',
+                username: $('#login input[name="email"]').val(),
+                password: $('#login input[name="password"]').val()
+            };
+            APP.global.connectToAPI.login(user);
         });
     };
 

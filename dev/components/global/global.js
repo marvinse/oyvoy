@@ -11,16 +11,11 @@ APP.global = (function () {
 		}).done(function(){
 			$('body').trigger('handlebar-templates-loaded');
 		});
-		connectToAPI.login();
+		connectToAPI.appLogin();
 	};
 
 	var connectToAPI = {
 		rootPath: 'http://' + window.location.hostname+'/webapi',
-        userRegistrationInfo : {
-            Email: 'admin@offershore.com',
-            Password: 'Pass0123&',
-            ConfirmPassword: 'Pass0123&'
-        },
         userLogin: {
             grant_type: 'password',
             username: '00216445-5bf0-4ac5-9be2-402c76f861ee',
@@ -35,22 +30,38 @@ APP.global = (function () {
             }
             return authHeaders;
         },
-		login: function() {
+		appLogin: function() {
 	        $.ajax({
                 type: "POST",
                 url: this.rootPath + '/TOKEN',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: this.userLogin,
                 success: function (data) {
-                    sessionStorage.setItem('userName', data.userName);
                     sessionStorage.setItem('userRole',APP.global.connectToAPI.getUserByUserName(data.userName).RoleId);
                     sessionStorage.setItem('accessToken', data.access_token);
-                    sessionStorage.setItem('refreshToken', data.refresh_token);
                 },
                 error: function (error) {
+                    
                 }
             });
     	},
+        login: function(user){
+            $.ajax({
+                type: "POST",
+                url: this.rootPath + '/TOKEN',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: user,
+                success: function (data) {
+                    sessionStorage.setItem('userName', data.userName);
+                    sessionStorage.setItem('userId',APP.global.connectToAPI.getUserByUserName(data.userName).Id);
+                    alert('Usuario logueado, redirigiendo...');
+                    location.reload();
+                },
+                error: function (error) {
+                    alert( $.parseJSON(error.responseText).error_description );
+                }
+            });
+        },
         logout: function() {
             $.ajax({
                 type: "POST",
