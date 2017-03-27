@@ -9,6 +9,9 @@ APP.sliderRestaurants = (function () {
 
     var init = function (element) {
     	console.log('APP.sliderRestaurants');
+        if(window.handlebartemplatesloaded == true){
+            setSliders();  
+        }
         $('body').on('handlebar-templates-loaded',setSliders);
     };
 

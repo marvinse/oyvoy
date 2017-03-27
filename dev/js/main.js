@@ -4975,6 +4975,7 @@ APP.global = (function () {
 		$.get('pages/handlebar-templates.html', function(data) {
 			$('body').append(data);
 		}).done(function(){
+            window.handlebartemplatesloaded = true;
 			$('body').trigger('handlebar-templates-loaded');
 		});
 		connectToAPI.appLogin();
@@ -5688,6 +5689,9 @@ APP.sliderRestaurants = (function () {
 
     var init = function (element) {
     	console.log('APP.sliderRestaurants');
+        if(window.handlebartemplatesloaded == true){
+            setSliders();  
+        }
         $('body').on('handlebar-templates-loaded',setSliders);
     };
 

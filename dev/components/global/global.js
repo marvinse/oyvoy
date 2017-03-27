@@ -9,6 +9,7 @@ APP.global = (function () {
 		$.get('pages/handlebar-templates.html', function(data) {
 			$('body').append(data);
 		}).done(function(){
+            window.handlebartemplatesloaded = true;
 			$('body').trigger('handlebar-templates-loaded');
 		});
 		connectToAPI.appLogin();
