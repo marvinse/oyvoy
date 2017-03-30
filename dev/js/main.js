@@ -4939,7 +4939,15 @@ APP.fullModal = (function () {
 
     var init = function () {
         console.log('APP.fullModal');
-    	bindEventsToUI();
+        $('body').on('connectToAPI-loaded',function(){
+            loadImage();
+            bindEventsToUI();
+        });
+    };
+
+    var loadImage = function(){
+        var imageUrl = APP.global.connectToAPI.getFullModalBanner().HomeImageurl;
+        $('.full-modal>img').attr('src',imageUrl);
     };
 
     var bindEventsToUI = function(){
@@ -5056,6 +5064,22 @@ APP.global = (function () {
                     alert('Hubo un error, intente con un password más fuerte');
                 }
             });
+        },
+        getFullModalBanner: function(){
+            var response;
+            $.ajax({
+                type: "GET",
+                async: false,
+                url: this.rootPath + '/api/UtilitiesApi/GetAll',
+                headers: this.requestToken(),
+                data: {},
+                success: function (data) {
+                    response = data;
+                },
+                error: function (error) {
+                }
+            });
+            return response;
         },
     	getOffers: function(val) {
             var response;

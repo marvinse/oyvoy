@@ -91,6 +91,22 @@ APP.global = (function () {
                 }
             });
         },
+        getFullModalBanner: function(){
+            var response;
+            $.ajax({
+                type: "GET",
+                async: false,
+                url: this.rootPath + '/api/UtilitiesApi/GetAll',
+                headers: this.requestToken(),
+                data: {},
+                success: function (data) {
+                    response = data;
+                },
+                error: function (error) {
+                }
+            });
+            return response;
+        },
     	getOffers: function(val) {
             var response;
             $.ajax({

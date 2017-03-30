@@ -6,7 +6,15 @@ APP.fullModal = (function () {
 
     var init = function () {
         console.log('APP.fullModal');
-    	bindEventsToUI();
+        $('body').on('connectToAPI-loaded',function(){
+            loadImage();
+            bindEventsToUI();
+        });
+    };
+
+    var loadImage = function(){
+        var imageUrl = APP.global.connectToAPI.getFullModalBanner().HomeImageurl;
+        $('.full-modal>img').attr('src',imageUrl);
     };
 
     var bindEventsToUI = function(){
