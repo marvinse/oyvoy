@@ -785,7 +785,7 @@ figure {
           bottom: auto;
           left: calc(89px - 20px);
           top: 0;
-          width: 340px; } }
+          width: 440px; } }
       .menu__item .submenu li {
         border-bottom: 1px solid #585858;
         padding: 10px 0; }
@@ -970,7 +970,8 @@ figure {
       .menu__item--chat > span.is-active {
         background: url("../images/chat-icon-active.png"); }
     .menu__item--chat .submenu {
-      height: 400px; }
+      height: 400px;
+      overflow: auto; }
       @media only screen and (min-width: 768px) {
         .menu__item--chat .submenu {
           top: -200px; } }

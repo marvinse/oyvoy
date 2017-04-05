@@ -5827,8 +5827,10 @@ APP.sliderRestaurants = (function () {
             $('.slider-restaurants__popup__reviews .replace-with-ajax').after(html);
             $('.slider-restaurants__popup__reviews--mobile .replace-with-ajax').after(htmlMobile);
         });
-        shortReview = (reviews[0].Message).slice(0, 30);
-        $('.slider-restaurants__popup__reviews__short-description p').html(shortReview+'...');
+        if(reviews[0] != null){
+            shortReview = (reviews[0].Message).slice(0, 30);
+            $('.slider-restaurants__popup__reviews__short-description p').html(shortReview+'...');
+        }
         $('.slider-restaurants__popup__reviews__quantity').html('('+reviews.length+')');
     };
 
