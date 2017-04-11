@@ -5008,6 +5008,7 @@ APP.global = (function () {
 		appLogin: function() {
 	        $.ajax({
                 type: "POST",
+                async: false,
                 url: this.rootPath + '/TOKEN',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: this.userLogin,
