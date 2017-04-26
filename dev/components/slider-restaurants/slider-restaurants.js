@@ -210,6 +210,8 @@ APP.sliderRestaurants = (function () {
                         APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
                     });
                 }
+            }else{
+                alert('Debe estar logueado para guardar esto como favorito');
             }
         });
 

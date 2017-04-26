@@ -30,8 +30,8 @@ APP.banner = (function () {
             }
         });
     	$(window).load(function(){
-            bannersHeight = parseInt($('.banner').css('height')) * 2;
             $('.bxslider').bxSlider(settings);
+            bannersHeight = parseInt($('.banner').parent().css('height')) * 2;
             $('.slider-restaurants__wrapper, .slider-restaurants__popup').css('height','calc(100% - '+bannersHeight+'px)');
         });
     };

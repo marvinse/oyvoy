@@ -171,7 +171,7 @@ APP.menu = (function () {
     };
 
     var setWhatWeHaveForToday = function(){
-        var offersPerDay = APP.global.connectToAPI.getOffersByDateType('Day');
+        var offersPerDay = APP.global.connectToAPI.getOffers(null);
         var catArray = [];
         $.each(offersPerDay,function(i,offer){
             if( $.inArray(offer.CategoryId, catArray) == -1 ){ //categoryId doesn't exist in array

@@ -764,7 +764,7 @@ figure {
       .menu__item {
         float: none;
         position: relative;
-        margin: 0 0 76px;
+        margin: 0 0 100px;
         width: 100%; } }
     .menu__item .submenu {
       background: white;

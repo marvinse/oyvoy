@@ -4918,8 +4918,8 @@ APP.banner = (function () {
             }
         });
     	$(window).load(function(){
-            bannersHeight = parseInt($('.banner').css('height')) * 2;
             $('.bxslider').bxSlider(settings);
+            bannersHeight = parseInt($('.banner').parent().css('height')) * 2;
             $('.slider-restaurants__wrapper, .slider-restaurants__popup').css('height','calc(100% - '+bannersHeight+'px)');
         });
     };
@@ -5555,7 +5555,7 @@ APP.menu = (function () {
     };
 
     var setWhatWeHaveForToday = function(){
-        var offersPerDay = APP.global.connectToAPI.getOffersByDateType('Day');
+        var offersPerDay = APP.global.connectToAPI.getOffers(null);
         var catArray = [];
         $.each(offersPerDay,function(i,offer){
             if( $.inArray(offer.CategoryId, catArray) == -1 ){ //categoryId doesn't exist in array
@@ -5915,6 +5915,8 @@ APP.sliderRestaurants = (function () {
                         APP.global.connectToAPI.deleteByFavId( $('.slider-restaurants__popup').data('fav-id') ); 
                     });
                 }
+            }else{
+                alert('Debe estar logueado para guardar esto como favorito');
             }
         });
 
