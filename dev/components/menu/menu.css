@@ -75,6 +75,8 @@
         cursor: pointer; }
         .menu__item--hamburger .submenu > li:hover {
           color: #808080; }
+        .menu__item--hamburger .submenu > li.logout {
+          display: none; }
       .menu__item--hamburger .submenu-level2 > li {
         border-bottom: 0;
         display: none; }

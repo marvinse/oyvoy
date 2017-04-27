@@ -74,6 +74,8 @@ APP.global = (function () {
                     sessionStorage.removeItem('userId');
                     sessionStorage.removeItem('accessToken');
                     sessionStorage.removeItem('refreshToken');
+                    alert('Usuario deslogueado, redirigiendo...');
+                    location.reload();
                 },
                 error: function (error) {
                 }
@@ -405,6 +407,8 @@ APP.global = (function () {
     };
 
 }());
-
+$(window).load(function() {
+    $('.preloader').fadeOut('slow');
+});
 APP.global.init();
 $('body').trigger('connectToAPI-loaded');

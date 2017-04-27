@@ -85,6 +85,9 @@
 					&:hover{
 						color: #808080;
 					}
+					&.logout{
+						display: none;
+					}
 				}
 				&-level2{
 					>li{

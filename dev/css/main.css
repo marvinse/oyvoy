@@ -689,6 +689,15 @@ figure {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
   /* IE6-9 */ }
 
+.preloader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("../images/preloader.gif") center no-repeat #fff; }
+
 @media only screen and (min-width: 768px) {
   .banner {
     height: 100px; } }
@@ -807,6 +816,8 @@ figure {
         cursor: pointer; }
         .menu__item--hamburger .submenu > li:hover {
           color: #808080; }
+        .menu__item--hamburger .submenu > li.logout {
+          display: none; }
       .menu__item--hamburger .submenu-level2 > li {
         border-bottom: 0;
         display: none; }

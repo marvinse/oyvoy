@@ -5048,6 +5048,8 @@ APP.global = (function () {
                     sessionStorage.removeItem('userId');
                     sessionStorage.removeItem('accessToken');
                     sessionStorage.removeItem('refreshToken');
+                    alert('Usuario deslogueado, redirigiendo...');
+                    location.reload();
                 },
                 error: function (error) {
                 }
@@ -5379,7 +5381,9 @@ APP.global = (function () {
     };
 
 }());
-
+$(window).load(function() {
+    $('.preloader').fadeOut('slow');
+});
 APP.global.init();
 $('body').trigger('connectToAPI-loaded');
 'use strict';
@@ -5492,6 +5496,10 @@ APP.menu = (function () {
             APP.global.connectToAPI.sendEmail(name,'Mensaje recibido de '+email,body);
         });
 
+        $('.logout').click(function(){
+            APP.global.connectToAPI.logout();
+        });
+
         $('#register').validate({
             rules:{
                 email: {
@@ -5579,6 +5587,8 @@ APP.menu = (function () {
                 var html = templateScript(favorite);
                 $('.menu .submenu-favorites ul').append(html);
             });
+            $('.login').css('display','none');
+            $('.logout').css('display','block');
         }else{
             $('.menu li[data-submenu=submenu-favorites]').remove();
         }
